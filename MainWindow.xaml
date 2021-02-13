@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="scanButton" Height="50" Width="200" FontSize="20" >Dokument scannen</Button>
     </Grid>
 </Window>
