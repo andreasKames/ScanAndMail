@@ -24,5 +24,10 @@ namespace ScanAndMail
         {
             InitializeComponent();
         }
+
+        private void scanButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

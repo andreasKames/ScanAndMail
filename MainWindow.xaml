@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ScanAndMail" Height="450" Width="800">
     <Grid>
-        <Button x:Name="scanButton" Height="50" Width="200" FontSize="20" >Dokument scannen</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Button Grid.RowSpan="2" x:Name="scanButton" Click="scanButton_Click" Height="60" Width="200" FontSize="20" >
+            Dokument scannen
+        </Button>
+        <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="1" Height="298" Width="212">
+            
+        </Image>
     </Grid>
 </Window>
