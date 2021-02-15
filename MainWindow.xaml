@@ -23,6 +23,11 @@
         <Button Grid.RowSpan="2" x:Name="scanButton" Click="scanButton_Click" Height="60" Width="200" FontSize="20" >
             Dokument scannen
         </Button>
+
+        <Button Click="weiterButton_Click" x:Name="weiterButton"  Height="40" Width="200" FontSize="20" Grid.Row="2" Grid.Column="1" >
+            Weiter
+        </Button>
+        
         <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="1" Height="298" Width="212">
             
         </Image>

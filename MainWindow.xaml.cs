@@ -29,5 +29,10 @@ namespace ScanAndMail
         {
 
         }
+
+        private void weiterButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
