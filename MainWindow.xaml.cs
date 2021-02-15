@@ -34,5 +34,15 @@ namespace ScanAndMail
         {
 
         }
+
+        private void einstellungenButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -22,7 +22,13 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        
+        <Button x:Name="einstellungenButton" Click="einstellungenButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100">
+            Einstellungen
+        </Button>
+
+        <Button x:Name="infoButton" Click="infoButton_Click" VerticalAlignment="Top"  Width="100" Margin="105,0,191,0">
+            Info
+        </Button>
 
 
         <Button Grid.RowSpan="2" x:Name="scanButton" Click="scanButton_Click" Height="60" Width="200" FontSize="20" Background="#FFE09030" >
