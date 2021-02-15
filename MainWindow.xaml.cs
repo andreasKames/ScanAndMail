@@ -37,7 +37,8 @@ namespace ScanAndMail
 
         private void einstellungenButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ConfWindow confWindow = new ConfWindow();
+            confWindow.Show();
         }
 
         private void infoButton_Click(object sender, RoutedEventArgs e)

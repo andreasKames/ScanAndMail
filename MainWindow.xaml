@@ -22,7 +22,7 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="einstellungenButton" Click="einstellungenButton_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Margin="0,0,0,155">
+        <Button x:Name="einstellungenButton" Click="einstellungenButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="20">
             Einstellungen
         </Button>
 
