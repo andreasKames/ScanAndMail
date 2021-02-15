@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
         Title="ScanAndMail" Height="450" Width="800">
+    
+    
     <Grid>
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -18,13 +22,15 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
+        
 
 
-        <Button Grid.RowSpan="2" x:Name="scanButton" Click="scanButton_Click" Height="60" Width="200" FontSize="20" >
+        <Button Grid.RowSpan="2" x:Name="scanButton" Click="scanButton_Click" Height="60" Width="200" FontSize="20" Background="#FFE09030" >
             Dokument scannen
-        </Button>
+            </Button>
+            
 
-        <Button Click="weiterButton_Click" x:Name="weiterButton"  Height="40" Width="200" FontSize="20" Grid.Row="2" Grid.Column="1" >
+            <Button Click="weiterButton_Click" x:Name="weiterButton"  Height="40" Width="200" FontSize="20" Grid.Row="2" Grid.Column="1" >
             Weiter
         </Button>
         
