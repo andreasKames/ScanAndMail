@@ -42,7 +42,7 @@ namespace ScanAndMail
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Programmiert von\nAndreas Kames");
         }
     }
 }
