@@ -7,11 +7,19 @@
         mc:Ignorable="d"
         Title="Einstellungen" Height="450" Width="800">
     <Grid>
-        <TabControl TabStripPlacement="Left">
+        <TabControl TabStripPlacement="Left" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TabItem Header="Scanner">
-                <Label Content="Content goes here..." />
+                <StackPanel>
+                    <Label Content="Bitte Scanner auswählen:" />
+                    <ComboBox Width="200" HorizontalAlignment="Left">
+                        
+                    </ComboBox>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="E-Mail" />
+            <TabItem Header="E-Mail">
+                
+            </TabItem>
+
         </TabControl>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
