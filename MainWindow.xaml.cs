@@ -25,23 +25,23 @@ namespace ScanAndMail
             InitializeComponent();
         }
 
-        private void scanButton_Click(object sender, RoutedEventArgs e)
+        private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void weiterButton_Click(object sender, RoutedEventArgs e)
+        private void WeiterButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void einstellungenButton_Click(object sender, RoutedEventArgs e)
+        private void EinstellungenButton_Click(object sender, RoutedEventArgs e)
         {
             ConfWindow confWindow = new ConfWindow();
             confWindow.Show();
         }
 
-        private void infoButton_Click(object sender, RoutedEventArgs e)
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Programmiert von\nAndreas Kames");
         }
