@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="Einstellungen" Height="450" Width="800">
+        Title="Einstellungen" Height="450" Width="800" Loaded="ConfWindow_Loaded">
     <Grid>
         <TabControl TabStripPlacement="Left" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TabItem Header="Scanner">

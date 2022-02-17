@@ -23,5 +23,10 @@ namespace ScanAndMail
         {
             InitializeComponent();
         }
+
+        private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+           // MessageBox.Show("Hallo");
+        }
     }
 }
