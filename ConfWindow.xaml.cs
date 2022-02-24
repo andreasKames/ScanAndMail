@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//using NSane;
+using WIA;
 
 namespace ScanAndMail
 {
@@ -26,7 +28,7 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {
-           // MessageBox.Show("Hallo");
+           MessageBox.Show("Hallo");
         }
     }
 }
