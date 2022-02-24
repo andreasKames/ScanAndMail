@@ -11,9 +11,7 @@
             <TabItem Header="Scanner">
                 <StackPanel>
                     <Label Content="Bitte Scanner auswählen:" />
-                    <ComboBox Width="200" HorizontalAlignment="Left">
-                        
-                    </ComboBox>
+                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="E-Mail">

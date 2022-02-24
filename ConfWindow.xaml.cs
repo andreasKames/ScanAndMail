@@ -28,7 +28,31 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {
-           MessageBox.Show("Hallo");
+            // Create a DeviceManager instance
+            var deviceManager = new DeviceManager();
+
+            // Loop through the list of devices
+            for (int i = 1; i <= deviceManager.DeviceInfos.Count; i++)
+            {
+                // Skip the device if it's not a scanner
+                if (deviceManager.DeviceInfos[i].Type != WiaDeviceType.ScannerDeviceType)
+                {
+                    continue;
+                }
+                ListBoxScanner.Items.Add( deviceManager.DeviceInfos[i].Properties["Name"].get_Value() );
+                
+                // Print something like e.g "WIA Canoscan 4400F"
+                //Console.WriteLine(deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
+                // e.g Canoscan 4400F
+                //Console.WriteLine(deviceManager.DeviceInfos[i].Properties["Description"].get_Value());
+                // e.g \\.\Usbscan0
+                //Console.WriteLine(deviceManager.DeviceInfos[i].Properties["Port"].get_Value());
+            }
+            if (deviceManager.DeviceInfos.Count > 0)
+            {
+                ListBoxScanner.SelectedIndex = 0;
+            }
+
         }
     }
 }
