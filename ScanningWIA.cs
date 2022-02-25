@@ -31,7 +31,7 @@ namespace ScanAndMail
 
         public List<String>  ListScanner()
         {
-            List<String> scanner = new List<String>();
+            List<String> scannerList = new List<String>();
             
             // Loop through the list of devices
             // ATTENTION: deviceManager.DeviceInfos[i] starts with 1 !!!!
@@ -42,10 +42,10 @@ namespace ScanAndMail
                 {
                     continue;
                 }
-                scanner.Add( (string)deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
+                scannerList.Add( (string)deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
             }
             
-            return scanner;
+            return scannerList;
         }
 
 

@@ -43,5 +43,10 @@ namespace ScanAndMail
             }
 
         }
+
+        private void ListBoxScanner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            scanningWIA.SetChoosedScanner(ListBoxScanner.SelectedIndex);
+        }
     }
 }

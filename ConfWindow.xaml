@@ -11,7 +11,7 @@
             <TabItem Header="Scanner">
                 <StackPanel>
                     <Label Content="Bitte Scanner auswählen:" />
-                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBoxScanner_SelectionChanged"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="E-Mail">
