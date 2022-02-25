@@ -21,6 +21,8 @@ namespace ScanAndMail
     /// </summary>
     public partial class ConfWindow : Window
     {
+        private ScanningWIA scanningWIA;
+
         public ConfWindow()
         {
             InitializeComponent();
@@ -28,8 +30,17 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            scanningWIA = new ScanningWIA();
+            List<string> listScanner = scanningWIA.ListScanner();
+            foreach (string s in listScanner)
+            {
+                ListBoxScanner.Items.Add(s);
+            }
 
-            //List<string> list = 
+            if (listScanner.Count > 0)
+            {
+                ListBoxScanner.SelectedIndex = 0;
+            }
 
         }
     }

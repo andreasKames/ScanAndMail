@@ -12,12 +12,12 @@ namespace ScanAndMail
         private DeviceManager deviceManager;
         private DeviceInfo deviceInfo;
 
-        ScanningWIA()
+        public ScanningWIA()
         {
             deviceManager = new DeviceManager();
         }
 
-        List<String> ListScanner()
+        public List<String>  ListScanner()
         {
             List<String> scanner = new List<String>();
             
@@ -32,6 +32,7 @@ namespace ScanAndMail
                 }
                 scanner.Add( (string)deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
             }
+            
             /*
             if (deviceManager.DeviceInfos.Count > 0)
             {
