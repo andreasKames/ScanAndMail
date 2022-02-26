@@ -41,7 +41,7 @@ namespace ScanAndMail
             {
                 ListBoxScanner.SelectedIndex = 0;
             }
-
+            
         }
 
         private void ListBoxScanner_SelectionChanged(object sender, SelectionChangedEventArgs e)

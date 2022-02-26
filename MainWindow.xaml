@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="ScanAndMail" Height="450" Width="800">
+        Title="ScanAndMail" Height="450" Width="800" Loaded="MainWindow_Loaded" Activated="MainWindow_Activated">
 
 
     <Grid>
@@ -31,9 +31,7 @@
         </Button>
 
 
-        <Button Grid.RowSpan="2" x:Name="scanButton" Click="ScanButton_Click" Height="60" Width="200" FontSize="20" Background="#FFE09030" Margin="100,144,100,48" Grid.Row="1" RenderTransformOrigin="0.507,0.727" >
-            Dokument scannen
-        </Button>
+        <Button x:Name="scanButton" Click="ScanButton_Click" Height="60" Width="200" FontSize="20" Background="#FFE09030"  RenderTransformOrigin="0.507,0.727" Content="Dokument scannen" Grid.Row="1" />
 
 
         <Button Click="WeiterButton_Click" x:Name="weiterButton"  Height="40" Width="200" FontSize="20" Grid.Row="2" Grid.Column="1" >

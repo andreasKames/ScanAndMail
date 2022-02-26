@@ -15,7 +15,7 @@ namespace ScanAndMail
         public ScanningWIA()
         {
             deviceManager = new DeviceManager();
-
+            choosedScanner = 1;
         }
 
         public void SetChoosedScanner(int choosedScanner)
@@ -48,10 +48,7 @@ namespace ScanAndMail
             return scannerList;
         }
 
-
-
-
-        void scanImage(String fileName)
+        public void ScanImage(String fileName)
         {
 
         }

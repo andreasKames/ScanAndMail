@@ -45,5 +45,18 @@ namespace ScanAndMail
         {
             MessageBox.Show("Programmiert von\nAndreas Kames");
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+           // Console.WriteLine("Loaded");
+        }
+
+
+        private void MainWindow_Activated(object sender, EventArgs e)
+        {
+            Console.WriteLine("Activated");
+
+
+        }
     }
 }
