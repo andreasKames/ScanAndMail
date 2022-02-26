@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="ScanAndMail" Height="450" Width="800" Loaded="MainWindow_Loaded" Activated="MainWindow_Activated">
+        Title="ScanAndMail" Height="450" Width="800"  Activated="MainWindow_Activated">
 
 
     <Grid>
