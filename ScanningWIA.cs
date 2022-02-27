@@ -10,16 +10,28 @@ namespace ScanAndMail
     internal class ScanningWIA
     {
         private DeviceManager deviceManager;
-        private DeviceInfo deviceInfo;
+        private int choosedScanner;
 
-        ScanningWIA()
+        public ScanningWIA()
         {
             deviceManager = new DeviceManager();
+            choosedScanner = 1;
         }
 
-        List<String> ListScanner()
+        public void SetChoosedScanner(int choosedScanner)
         {
-            List<String> scanner = new List<String>();
+            if (choosedScanner < 0)
+                this.choosedScanner = 1;
+            this.choosedScanner = choosedScanner + 1;
+            if (choosedScanner > deviceManager.DeviceInfos.Count)
+            {
+                this.choosedScanner = deviceManager.DeviceInfos.Count;
+            }
+        }
+
+        public List<String>  ListScanner()
+        {
+            List<String> scannerList = new List<String>();
             
             // Loop through the list of devices
             // ATTENTION: deviceManager.DeviceInfos[i] starts with 1 !!!!
@@ -30,19 +42,13 @@ namespace ScanAndMail
                 {
                     continue;
                 }
-                scanner.Add( (string)deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
+                scannerList.Add( (string)deviceManager.DeviceInfos[i].Properties["Name"].get_Value());
             }
-            /*
-            if (deviceManager.DeviceInfos.Count > 0)
-            {
-                ListBoxScanner.SelectedIndex = 0;
-
-            }
-            */
-            return scanner;
+            
+            return scannerList;
         }
 
-        void scanImage(String fileName)
+        public void ScanImage(String fileName)
         {
 
         }
