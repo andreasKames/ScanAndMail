@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScanAndMail
 {
-    internal class Configuaratiion
+    internal class Configuaration_old
     {
         private int scannerNumber { get; set; }
         private String path { get; set; }
@@ -29,7 +29,9 @@ namespace ScanAndMail
 
         public  void SaveConfToFile()
         {
-
+            //ConfigurationManager.AppSettings["ScannerNumber"];
+            path = ConfigurationManager.AppSettings["Path"];
+            fileName = ConfigurationManager.AppSettings["FileName"];
         }
         
 
