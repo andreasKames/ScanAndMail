@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="ConfigurationEMail.cs" />
     <Compile Include="ConfigurationScanner.cs" />
+    <Compile Include="ScannerSettings.cs" />
     <Compile Include="ScanningWIA.cs" />
     <Page Include="ConfWindow.xaml">
       <SubType>Designer</SubType>

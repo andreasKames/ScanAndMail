@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WIA;
 
 namespace ScanAndMail
 {
@@ -32,8 +33,9 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            var deviceManager = new DeviceManager();
+            var scanner = deviceManager.DeviceInfos[scannerNumber].Connect();
+            var scannerItem = scanner.Items[1];
 
 
             weiterButton.IsEnabled = true; 
@@ -62,6 +64,12 @@ namespace ScanAndMail
             this.path = ConfigurationManager.AppSettings.Get("path");
             this.fileName = ConfigurationManager.AppSettings.Get("fileName");
 
+            // Wenn Scanner nicht erkannt wurde Scan Button deaktivieren
+
+            if (scannerNumber == -1)
+            {
+                scanButton.IsEnabled = false;
+            }
         }
     }
 }
