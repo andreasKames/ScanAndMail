@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,8 @@ namespace ScanAndMail
         }
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
-        {
+        {   
+            //Scannerliste initialisieren
             scanningWIA = new ScanningWIA();
             List<string> listScanner = scanningWIA.ListScanner();
             foreach (string s in listScanner)
@@ -37,16 +39,26 @@ namespace ScanAndMail
                 ListBoxScanner.Items.Add(s);
             }
 
-            if (listScanner.Count > 0)
+            if (listScanner.Count == 0 )
             {
                 ListBoxScanner.SelectedIndex = 0;
             }
-            
+
+
+            //
+
         }
 
         private void ListBoxScanner_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             scanningWIA.SetChoosedScanner(ListBoxScanner.SelectedIndex);
+        }
+
+        private void ConfWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ConfigurationManager.AppSettings.Set("ScannerNumber", ListBoxScanner.SelectedIndex.ToString());
+            ConfigurationManager.AppSettings.Set("path", PathTextBox.Text);
+            ConfigurationManager.AppSettings.Set("fileName", FileNameTextBox.Text);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,10 @@ namespace ScanAndMail
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int scannerNumber;
+        private string path;
+        private string fileName;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +32,11 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            
 
+
+            weiterButton.IsEnabled = true; 
         }
 
         private void WeiterButton_Click(object sender, RoutedEventArgs e)
@@ -49,7 +58,9 @@ namespace ScanAndMail
         private void MainWindow_Activated(object sender, EventArgs e)
         {
             Console.WriteLine("Activated");
-
+            this.scannerNumber = Convert.ToInt32( ConfigurationManager.AppSettings.Get("scannerNumger"));
+            this.path = ConfigurationManager.AppSettings.Get("path");
+            this.fileName = ConfigurationManager.AppSettings.Get("fileName");
 
         }
     }

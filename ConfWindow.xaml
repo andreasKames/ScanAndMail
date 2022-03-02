@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="Einstellungen" Height="450" Width="800" Loaded="ConfWindow_Loaded">
+        Title="Einstellungen" Height="450" Width="800" Loaded="ConfWindow_Loaded" Closing="ConfWindow_Closing">
     <Grid>
         <TabControl TabStripPlacement="Left" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TabItem Header="Scanner">
@@ -13,7 +13,9 @@
                     <Label Content="Bitte Scanner auswählen:" />
                     <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBoxScanner_SelectionChanged"/>
                     <Label Content="Dateipfad:" FontWeight="Bold"/>
-                    <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="TextBox" Width="739"/>
+                    <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
+                    <Label Content="Dateiname:" FontWeight="Bold"/>
+                    <TextBox x:Name="FileNameTextBox" TextWrapping="Wrap" Text="Scan" Width="739"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="E-Mail">
