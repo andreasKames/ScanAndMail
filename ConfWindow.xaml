@@ -11,7 +11,7 @@
             <TabItem Header="Scanner">
                 <StackPanel>
                     <Label Content="Bitte Scanner auswählen:" />
-                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBoxScanner_SelectionChanged"/>
+                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" />
                     <Label Content="Dateipfad:" FontWeight="Bold"/>
                     <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
                     <Label Content="Dateiname:" FontWeight="Bold"/>

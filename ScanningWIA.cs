@@ -10,25 +10,13 @@ namespace ScanAndMail
     internal class ScanningWIA
     {
         private DeviceManager deviceManager;
-        private int choosedScanner;
+        
 
         public ScanningWIA()
         {
             deviceManager = new DeviceManager();
-            choosedScanner = 1;
         }
-
-        public void SetChoosedScanner(int choosedScanner)
-        {
-            if (choosedScanner < 0)
-                this.choosedScanner = 1;
-            this.choosedScanner = choosedScanner + 1;
-            if (choosedScanner > deviceManager.DeviceInfos.Count)
-            {
-                this.choosedScanner = deviceManager.DeviceInfos.Count;
-            }
-        }
-
+        
         public List<String>  ListScanner()
         {
             List<String> scannerList = new List<String>();

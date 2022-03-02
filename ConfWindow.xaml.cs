@@ -23,6 +23,7 @@ namespace ScanAndMail
     public partial class ConfWindow : Window
     {
         private ScanningWIA scanningWIA;
+        
 
         public ConfWindow()
         {
@@ -47,11 +48,6 @@ namespace ScanAndMail
 
             //
 
-        }
-
-        private void ListBoxScanner_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            scanningWIA.SetChoosedScanner(ListBoxScanner.SelectedIndex);
         }
 
         private void ConfWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
