@@ -33,10 +33,11 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
+
             var deviceManager = new DeviceManager();
             var scanner = deviceManager.DeviceInfos[scannerNumber].Connect();
             var scannerItem = scanner.Items[1];
-
+            var imageFile = (ImageFile)scannerItem.Transfer(FormatID.wiaFormatJPEG);
 
             weiterButton.IsEnabled = true; 
         }
