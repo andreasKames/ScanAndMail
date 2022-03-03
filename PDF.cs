@@ -10,9 +10,8 @@ namespace ScanAndMail
 {
     internal class PDF
     {
-        static public void storePDF(String ImageDir, String ImageFile, String PDF_Dir, String PDF_FileName)
+        static public void StorePDF(String ImageDir, String ImageFile, String PDF_Dir, String PDF_FileName)
         {
-            
             // Load input JPG file
             String ImagePath = ImageDir + ImageFile;
 
@@ -35,6 +34,5 @@ namespace ScanAndMail
             doc.Save(PDF_Dir + PDF_FileName);
             File.Delete(ImagePath);
         }
-
     }
 }
