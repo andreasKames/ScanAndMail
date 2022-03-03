@@ -41,7 +41,7 @@ namespace ScanAndMail
 
 
             imageFile.SaveFile(PDF_Dir + imageFileName);
-            Uri uri = new Uri(PDF_Dir + imageFileName);
+            Uri uri = new Uri(PDF_Dir + PDF_FileName);
             ScanImage.Source = new BitmapImage(uri);
             weiterButton.IsEnabled = true; 
         }

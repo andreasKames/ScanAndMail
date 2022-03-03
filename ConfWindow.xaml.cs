@@ -32,7 +32,7 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {   
-            //Scannerliste initialisieren
+            // Scannerliste initialisieren
             scanningWIA = new ScanningWIA();
             List<string> listScanner = scanningWIA.ListScanner();
             foreach (string s in listScanner)
@@ -40,21 +40,34 @@ namespace ScanAndMail
                 ListBoxScanner.Items.Add(s);
             }
 
-            if (listScanner.Count == 0 )
+            // Einlesen der Config Werte
+            int scannerNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("scannerNumger"));
+            if (scannerNumber >= 0)
+            {
+                ListBoxScanner.SelectedIndex = scannerNumber;
+            }
+            else
             {
                 ListBoxScanner.SelectedIndex = 0;
             }
 
-
-            //
+            ListBoxScanner.SelectedIndex = scannerNumber;
+            PathTextBox.Text = ConfigurationManager.AppSettings.Get("PDF_Dir");
+            FileNameTextBox.Text = ConfigurationManager.AppSettings.Get("PDF_FileName");
 
         }
 
-        private void ConfWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
             ConfigurationManager.AppSettings.Set("ScannerNumber", ListBoxScanner.SelectedIndex.ToString());
             ConfigurationManager.AppSettings.Set("path", PathTextBox.Text);
             ConfigurationManager.AppSettings.Set("fileName", FileNameTextBox.Text);
+            this.Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

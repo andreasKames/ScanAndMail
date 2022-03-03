@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
-        Title="Einstellungen" Height="450" Width="800" Loaded="ConfWindow_Loaded" Closing="ConfWindow_Closing">
+        Title="Einstellungen" Height="450" Width="800" Loaded="ConfWindow_Loaded">
     <Grid>
         <TabControl TabStripPlacement="Left" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TabItem Header="Scanner">
                 <StackPanel>
-                    <Label Content="Bitte Scanner auswählen:" />
+                    <Label Content="Bitte Scanner auswählen:" FontWeight="Bold" />
                     <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" />
                     <Label Content="Dateipfad:" FontWeight="Bold"/>
                     <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
@@ -19,19 +19,25 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="E-Mail">
-                
+
             </TabItem>
 
         </TabControl>
+        <Button x:Name="OK_Button"    Content="OK"        Grid.Row="1" Grid.Column="3" Width="99" Height="20" Click="OK_Button_Click"/>
+        <Button x:Name="CancelButton" Content="Abbrechen" Grid.Row="1" Grid.Column="2" Width="99" Height="20" Click="CancelButton_Click"/>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            
         </Grid.RowDefinitions>
-        
-        
+
+
     </Grid>
 </Window>
