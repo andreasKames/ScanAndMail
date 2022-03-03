@@ -12,8 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//using NSane;
 using WIA;
+using System.IO;
 
 namespace ScanAndMail
 {
@@ -41,7 +41,7 @@ namespace ScanAndMail
             }
 
             // Einlesen der Config Werte
-            int scannerNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("scannerNumger"));
+            int scannerNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("scannerNumber"));
             if (scannerNumber >= 0)
             {
                 ListBoxScanner.SelectedIndex = scannerNumber;
@@ -52,17 +52,34 @@ namespace ScanAndMail
             }
 
             ListBoxScanner.SelectedIndex = scannerNumber;
-            PathTextBox.Text = ConfigurationManager.AppSettings.Get("PDF_Dir");
-            FileNameTextBox.Text = ConfigurationManager.AppSettings.Get("PDF_FileName");
+            PathTextBox.Text = ConfigurationManager.AppSettings.Get("Directory");
+            FileNameTextBox.Text = ConfigurationManager.AppSettings.Get("FileName");
+            //Console.WriteLine("ScannerNr: " + scannerNumber);
 
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
+            String fileName = FileNameTextBox.Text;
+            //String scannerNumber = ListBoxScanner.SelectedIndex.ToString();
             ConfigurationManager.AppSettings.Set("ScannerNumber", ListBoxScanner.SelectedIndex.ToString());
             ConfigurationManager.AppSettings.Set("path", PathTextBox.Text);
-            ConfigurationManager.AppSettings.Set("fileName", FileNameTextBox.Text);
-            this.Close();
+            if (DateCheckBox.IsChecked == true)
+            {
+                fileName = FileNameWithDate.AddDate(fileName);
+            }
+            ConfigurationManager.AppSettings.Set("fileName", fileName);
+            //Console.WriteLine("ScannerNr: " + scannerNumber);
+            //ConfigurationManager.AppSettings.Get("PDF_Dir")
+            if (Directory.Exists(ConfigurationManager.AppSettings.Get("Directory")))
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Dateipfad nicht gefunden!");
+                PathTextBox.Focus();
+            }         
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

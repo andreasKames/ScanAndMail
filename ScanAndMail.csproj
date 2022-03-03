@@ -61,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="ConfigurationEMail.cs" />
     <Compile Include="ConfigurationScanner.cs" />
+    <Compile Include="FileNameWithDate.cs" />
     <Compile Include="PDF.cs" />
     <Compile Include="ScannerSettings.cs" />
     <Compile Include="ScanningWIA.cs" />
@@ -122,9 +123,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Screenshot 2021-11-17 16.40.12.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

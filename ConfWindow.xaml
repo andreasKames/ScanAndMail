@@ -16,6 +16,16 @@
                     <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
                     <Label Content="Dateiname:" FontWeight="Bold"/>
                     <TextBox x:Name="FileNameTextBox" TextWrapping="Wrap" Text="Scan" Width="739"/>
+                    <CheckBox x:Name="DateCheckBox" Content="Datum anfügen" RenderTransformOrigin="0.5,0.5" Width="472" IsChecked="True">
+                        <CheckBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.051"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </CheckBox.RenderTransform>
+                    </CheckBox>
                 </StackPanel>
             </TabItem>
             <TabItem Header="E-Mail">
@@ -35,7 +45,7 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
-            
+
         </Grid.RowDefinitions>
 
 

@@ -23,8 +23,8 @@ namespace ScanAndMail
     public partial class MainWindow : Window
     {
         private int scannerNumber;
-        private string PDF_Dir;
-        private string PDF_FileName;
+        private string Directory;
+        private string FileName;
 
         public MainWindow()
         {
@@ -33,16 +33,21 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            String imageFileName = "Temp.jpg";
             var deviceManager = new DeviceManager();
             var scanner = deviceManager.DeviceInfos[scannerNumber].Connect();
             var scannerItem = scanner.Items[1];
             var imageFile = (ImageFile)scannerItem.Transfer(FormatID.wiaFormatJPEG);
 
+            // Hier passiert DirectoryNotFoundException
+            
+            var imagePath = Directory + FileName;
 
-            imageFile.SaveFile(PDF_Dir + imageFileName);
+
+            imageFile.SaveFile(imagePath);
+            /*
             Uri uri = new Uri(PDF_Dir + PDF_FileName);
             ScanImage.Source = new BitmapImage(uri);
+            */
             weiterButton.IsEnabled = true; 
         }
 
@@ -64,17 +69,21 @@ namespace ScanAndMail
 
         private void MainWindow_Activated(object sender, EventArgs e)
         {
-            Console.WriteLine("Activated");
-            this.scannerNumber = Convert.ToInt32( ConfigurationManager.AppSettings.Get("scannerNumger") );
-            this.PDF_Dir = ConfigurationManager.AppSettings.Get("PDF_Dir");
-            this.PDF_FileName = ConfigurationManager.AppSettings.Get("PDF_FileName");
+            
+            this.scannerNumber = Convert.ToInt32( ConfigurationManager.AppSettings.Get("scannerNumber") );
+            this.Directory = ConfigurationManager.AppSettings.Get("Directory");
+            this.FileName = ConfigurationManager.AppSettings.Get("FileName");
 
-            Console.WriteLine("ScannerNr: " + scannerNumber);
+            //Console.WriteLine("ScannerNr: " + scannerNumber);
             // Wenn Scanner nicht erkannt wurde Scan Button deaktivieren
 
             if (scannerNumber == -1)
             {
                 scanButton.IsEnabled = false;
+            }
+            else
+            {
+                scanButton.IsEnabled = true;
             }
         }
     }
