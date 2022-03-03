@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +40,7 @@ namespace ScanAndMail
             }
 
             // Einlesen der Config Werte
-            int scannerNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("scannerNumber"));
+            int scannerNumber = ConfManager.GetScannerNumber();
             if (scannerNumber >= 0)
             {
                 ListBoxScanner.SelectedIndex = scannerNumber;
@@ -52,26 +51,29 @@ namespace ScanAndMail
             }
 
             ListBoxScanner.SelectedIndex = scannerNumber;
-            PathTextBox.Text = ConfigurationManager.AppSettings.Get("Directory");
-            FileNameTextBox.Text = ConfigurationManager.AppSettings.Get("FileName");
-            //Console.WriteLine("ScannerNr: " + scannerNumber);
-
+            PathTextBox.Text = ConfManager.GetDirectory();
+            FileNameTextBox.Text = ConfManager.GetFileName();            
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
             String fileName = FileNameTextBox.Text;
             //String scannerNumber = ListBoxScanner.SelectedIndex.ToString();
-            ConfigurationManager.AppSettings.Set("ScannerNumber", ListBoxScanner.SelectedIndex.ToString());
-            ConfigurationManager.AppSettings.Set("path", PathTextBox.Text);
+            
             if (DateCheckBox.IsChecked == true)
             {
-                fileName = FileNameWithDate.AddDate(fileName);
+                ConfManager.SetDateAdded(true);
             }
-            ConfigurationManager.AppSettings.Set("fileName", fileName);
-            //Console.WriteLine("ScannerNr: " + scannerNumber);
-            //ConfigurationManager.AppSettings.Get("PDF_Dir")
-            if (Directory.Exists(ConfigurationManager.AppSettings.Get("Directory")))
+            else
+            {
+                ConfManager.SetDateAdded(false);
+            }
+            
+            ConfManager.SetScannerNumber(ListBoxScanner.SelectedIndex);            
+            ConfManager.SetDiretory(PathTextBox.Text);           
+            ConfManager.SetFileName(fileName);           
+                        
+            if (Directory.Exists( ConfManager.GetDirectory() ) )
             {
                 this.Close();
             }

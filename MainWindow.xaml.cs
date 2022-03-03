@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -34,20 +34,22 @@ namespace ScanAndMail
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
             var deviceManager = new DeviceManager();
-            var scanner = deviceManager.DeviceInfos[scannerNumber].Connect();
+            var scanner = deviceManager.DeviceInfos[scannerNumber+1].Connect();
             var scannerItem = scanner.Items[1];
             var imageFile = (ImageFile)scannerItem.Transfer(FormatID.wiaFormatJPEG);
 
             // Hier passiert DirectoryNotFoundException
             
             var imagePath = Directory + FileName;
-
-
+            if (ConfManager.IsDateAdded())
+            {                
+                imagePath = FileNameWithDate.AddDate(imagePath);
+             }
+            imagePath = FileNameWithDate.FindFileName(imagePath);
             imageFile.SaveFile(imagePath);
-            /*
-            Uri uri = new Uri(PDF_Dir + PDF_FileName);
+            Uri uri = new Uri(imagePath);
             ScanImage.Source = new BitmapImage(uri);
-            */
+            
             weiterButton.IsEnabled = true; 
         }
 
@@ -70,9 +72,9 @@ namespace ScanAndMail
         private void MainWindow_Activated(object sender, EventArgs e)
         {
             
-            this.scannerNumber = Convert.ToInt32( ConfigurationManager.AppSettings.Get("scannerNumber") );
-            this.Directory = ConfigurationManager.AppSettings.Get("Directory");
-            this.FileName = ConfigurationManager.AppSettings.Get("FileName");
+            this.scannerNumber = ConfManager.GetScannerNumber();
+            this.Directory = ConfManager.GetDirectory();
+            this.FileName = ConfManager.GetFileName();
 
             //Console.WriteLine("ScannerNr: " + scannerNumber);
             // Wenn Scanner nicht erkannt wurde Scan Button deaktivieren
