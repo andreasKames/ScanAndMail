@@ -39,6 +39,8 @@ namespace ScanAndMail
             }
             return false;
         }
+
+
         // Setter Methods
 
         public static void SetDiretory(String directory)

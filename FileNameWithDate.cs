@@ -26,11 +26,12 @@ namespace ScanAndMail
             String tempFileName =  fileName;
             while (File.Exists(tempFileName))
             {
-                tempFileName = baseFileName + "." + Convert.ToString(postfix) +Path.GetExtension(fileName);                 
+                tempFileName = Path.GetDirectoryName(fileName) + @"\" + baseFileName 
+                    + "-" + Convert.ToString(postfix) +Path.GetExtension(fileName);                 
                 postfix++;
 
             }
-            tempFileName = Path.GetDirectoryName(fileName) + @"\" +  tempFileName;            
+            //tempFileName = Path.GetDirectoryName(fileName) + @"\" +  tempFileName;            
             return tempFileName;
         }
     }

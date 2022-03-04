@@ -20,7 +20,7 @@ namespace ScanAndMail
      /// <param name="brightnessPercents"></param>
      /// <param name="contrastPercents">Modify the contrast percent</param>
      /// <param name="colorMode">Set the color mode</param>
-        private static void AdjustScannerSettings(IItem scannnerItem, int scanResolutionDPI, int scanStartLeftPixel, int scanStartTopPixel, int scanWidthPixels, int scanHeightPixels, int brightnessPercents, int contrastPercents, int colorMode)
+        public static void AdjustScannerSettings(IItem scannnerItem, int scanResolutionDPI, int scanStartLeftPixel, int scanStartTopPixel, int scanWidthPixels, int scanHeightPixels, int brightnessPercents, int contrastPercents, int colorMode)
         {
             const string WIA_SCAN_COLOR_MODE = "6146";
             const string WIA_HORIZONTAL_SCAN_RESOLUTION_DPI = "6147";

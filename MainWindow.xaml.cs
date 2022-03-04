@@ -33,24 +33,23 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            var deviceManager = new DeviceManager();
-            var scanner = deviceManager.DeviceInfos[scannerNumber+1].Connect();
-            var scannerItem = scanner.Items[1];
-            var imageFile = (ImageFile)scannerItem.Transfer(FormatID.wiaFormatJPEG);
-
-            // Hier passiert DirectoryNotFoundException
-            
+            var scanningWIA = new ScanningWIA();
             var imagePath = Directory + FileName;
             if (ConfManager.IsDateAdded())
             {                
                 imagePath = FileNameWithDate.AddDate(imagePath);
              }
             imagePath = FileNameWithDate.FindFileName(imagePath);
-            imageFile.SaveFile(imagePath);
-            Uri uri = new Uri(imagePath);
-            ScanImage.Source = new BitmapImage(uri);
-            
-            weiterButton.IsEnabled = true; 
+            //Console.WriteLine("imagePath: " + imagePath);
+            var imageFile =  scanningWIA.ScanImage(scannerNumber);
+            if (imageFile != null)
+            {
+                imageFile.SaveFile(imagePath);
+                Uri uri = new Uri(imagePath);
+                ScanImage.Source = new BitmapImage(uri);
+
+                weiterButton.IsEnabled = true;
+            }             
         }
 
         private void WeiterButton_Click(object sender, RoutedEventArgs e)
