@@ -11,7 +11,7 @@ namespace ScanAndMail
     {
         private const String scannerNumberKey  = "scannerNumber";
         private const String directoryKey = "Directory";
-        private const String fileNameKey = "FileName";
+        private const String fileNameKey = "BaseFileName";
         private const String isDateAddedKey = "isDateAdded";
 
         //Getter Methods
