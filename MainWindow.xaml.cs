@@ -54,7 +54,8 @@ namespace ScanAndMail
 
         private void WeiterButton_Click(object sender, RoutedEventArgs e)
         {
-
+            E_MailWindow e_MailWindow = new E_MailWindow();
+            e_MailWindow.ShowDialog();
         }
 
         private void EinstellungenButton_Click(object sender, RoutedEventArgs e)

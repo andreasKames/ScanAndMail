@@ -51,6 +51,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,13 +70,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConfigurationEMail.cs" />
-    <Compile Include="ConfigurationScanner.cs" />
     <Compile Include="ConfManager.cs" />
+    <Compile Include="E_MailWindow.xaml.cs">
+      <DependentUpon>E_MailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileNameWithDate.cs" />
     <Compile Include="ScannerSettings.cs" />
     <Compile Include="ScanningWIA.cs" />
     <Page Include="ConfWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="E_MailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +93,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Configuaration_old.cs" />
     <Compile Include="ConfWindow.xaml.cs">
       <DependentUpon>ConfWindow.xaml</DependentUpon>
     </Compile>

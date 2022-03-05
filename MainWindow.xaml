@@ -26,7 +26,7 @@
             Einstellungen
         </Button>
 
-        <Button x:Name="infoButton" Click="InfoButton_Click" VerticalAlignment="Top"  Width="100" Margin="105,0,191,0">
+        <Button x:Name="infoButton" Click="InfoButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="100" Margin="100,0,0,0" >
             Info
         </Button>
 

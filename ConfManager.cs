@@ -9,66 +9,140 @@ namespace ScanAndMail
 {
     internal class ConfManager
     {
-        private const String scannerNumberKey  = "scannerNumber";
-        private const String directoryKey = "Directory";
-        private const String fileNameKey = "BaseFileName";
-        private const String isDateAddedKey = "isDateAdded";
+        private const String scannerNumberConstant = "scannerNumber";
+        private const String directoryConstant = "Directory";
+        private const String fileNameConstant = "BaseFileName";
+        private const String isDateAddedConstant = "isDateAdded";
+        private const String ScannedFileConstant = "ScannedFile";
 
-        //Getter Methods
+        private const String SenderConstant = "Sender";
+        private const String HashedPasswordConstant = "HashedPassword";
+        private const String SMTP_ServerConstant = "SMTP_Server";
 
-        public static String GetDirectory()
-        {
-            return ConfigurationManager.AppSettings.Get(directoryKey);
-        }
-
-        public static String GetFileName()
-        {
-            return ConfigurationManager.AppSettings.Get(fileNameKey);
-        }
-        
-        public static int GetScannerNumber()
-        {
-            return Convert.ToInt32(ConfigurationManager.AppSettings.Get(scannerNumberKey));
-        }
-
-        public static Boolean IsDateAdded()
-        {
-            if (ConfigurationManager.AppSettings.Get(isDateAddedKey) == "true")
-            { 
-                return true; 
-            }
-            return false;
-        }
+        private const String ReceiverConstant = "Receiver";
+        private const String SubjectConstant = "Subject";
+        private const String StandardTextConstant = "StandardText";
 
 
         // Setter Methods
 
         public static void SetDiretory(String directory)
         {
-            ConfigurationManager.AppSettings.Set(directoryKey, directory);
+            ConfigurationManager.AppSettings.Set(directoryConstant, directory);
         }
-
         public static void SetFileName(String fileName)
         {
-            ConfigurationManager.AppSettings.Set(fileNameKey, fileName);            
+            ConfigurationManager.AppSettings.Set(fileNameConstant, fileName);            
         }
-
         public static void SetScannerNumber(int scannerNumber)
         {
-            ConfigurationManager.AppSettings.Set(scannerNumberKey, scannerNumber.ToString());
+            ConfigurationManager.AppSettings.Set(scannerNumberConstant, scannerNumber.ToString());
         }
-
         public static void SetDateAdded(Boolean isDateAdded)
         {   
             if (isDateAdded == true)
             {
-                ConfigurationManager.AppSettings.Set(isDateAddedKey, "true");
+                ConfigurationManager.AppSettings.Set(isDateAddedConstant, "true");
             }
             else
             {
-                ConfigurationManager.AppSettings.Set(isDateAddedKey, "false");
+                ConfigurationManager.AppSettings.Set(isDateAddedConstant, "false");
             }
             
         }
+
+        public static void SetScannedFile(String str)
+        {
+            ConfigurationManager.AppSettings.Set(ScannedFileConstant, str);
+        }
+        public static void SetSender(String str)
+        {
+            ConfigurationManager.AppSettings.Set(SenderConstant, str);
+        }
+        public static void SetHashedPassword(String str)
+        {
+            ConfigurationManager.AppSettings.Set(HashedPasswordConstant, str);
+        }
+        public static void SetSMTP_Servery(String str)
+        {
+            ConfigurationManager.AppSettings.Set(SMTP_ServerConstant, str);
+        }
+        public static void SetReceivery(String str)
+        {
+            ConfigurationManager.AppSettings.Set(ReceiverConstant, str);
+        }
+        public static void SetSubject(String str)
+        {
+            ConfigurationManager.AppSettings.Set(SubjectConstant, str);
+        }
+        public static void SetStandardText(String str)
+        {
+            ConfigurationManager.AppSettings.Set(StandardTextConstant, str);
+        }
+
+
+        //Getter Methods
+
+
+        public static String GetDirectory()
+        {
+            return ConfigurationManager.AppSettings.Get(directoryConstant);
+        }
+
+        public static String GetFileName()
+        {
+            return ConfigurationManager.AppSettings.Get(fileNameConstant);
+        }
+
+        public static int GetScannerNumber()
+        {
+            return Convert.ToInt32(ConfigurationManager.AppSettings.Get(scannerNumberConstant));
+        }
+
+        public static Boolean IsDateAdded()
+        {
+            if (ConfigurationManager.AppSettings.Get(isDateAddedConstant) == "true")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static String GetScannedFile()
+        {
+            return ConfigurationManager.AppSettings.Get(ScannedFileConstant);
+        }
+
+        public static String GetSender()
+        {
+            return ConfigurationManager.AppSettings.Get(SenderConstant);
+        }
+
+        public static String GetHashedPassword()
+        {
+            return ConfigurationManager.AppSettings.Get(HashedPasswordConstant);
+        }
+
+        public static String GetSMTP_Server()
+        {
+            return ConfigurationManager.AppSettings.Get(SMTP_ServerConstant);
+        }
+
+        public static String GetReceiver()
+        {
+            return ConfigurationManager.AppSettings.Get(ReceiverConstant);
+        }
+
+        public static String GetSubject()
+        {
+            return ConfigurationManager.AppSettings.Get(SubjectConstant);
+        }
+
+        public static String GetStandardText()
+        {
+            return ConfigurationManager.AppSettings.Get(StandardTextConstant);
+        }
+
+
     }
 }

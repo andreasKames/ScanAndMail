@@ -11,30 +11,27 @@
             <TabItem x:Name="ScannerTabItem" Header="Scanner" FontWeight="Bold">
                 <StackPanel>
                     <Label Content="Bitte Scanner auswählen:" FontWeight="Bold" />
-                    <ListBox x:Name="ListBoxScanner" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}" />
+                    <ListBox x:Name="ListBoxScanner" Height="40" d:ItemsSource="{d:SampleData ItemCount=2}" />
                     <Label Content="Dateipfad:" FontWeight="Bold"/>
                     <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
                     <Label Content="Dateiname:" FontWeight="Bold"/>
                     <TextBox x:Name="FileNameTextBox" TextWrapping="Wrap" Text="Scan" Width="739"/>
-                    <CheckBox x:Name="DateCheckBox" Content="Datum anfügen" RenderTransformOrigin="0.5,0.5" Width="472" IsChecked="True">
-                        <CheckBox.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="-0.051"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </CheckBox.RenderTransform>
-                    </CheckBox>
+                    <CheckBox x:Name="DateCheckBox" Content="Datum anfügen" RenderTransformOrigin="0.5,0.5" Width="472" IsChecked="True"/>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="EMailTabItem" Header="E-Mail" >
-
+            <TabItem x:Name="EMailTabItem" Header="E-Mail" Height="20" VerticalAlignment="Bottom">
+                <StackPanel>
+                    <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold"/>
+                    <TextBox x:Name="E_MailTextBox" TextWrapping="Wrap" Text="" Width="515"/>
+                    <Label Content="Passwort:" FontWeight="Bold"/>
+                    <PasswordBox x:Name="PasswordBox"  Width="515"/>
+                </StackPanel>
             </TabItem>
-
         </TabControl>
         <Button x:Name="OK_Button"    Content="OK"        Grid.Row="1" Grid.Column="3" Width="99" Height="20" Click="OK_Button_Click"/>
         <Button x:Name="CancelButton" Content="Abbrechen" Grid.Row="1" Grid.Column="2" Width="99" Height="20" Click="CancelButton_Click"/>
+        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
