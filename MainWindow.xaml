@@ -6,11 +6,7 @@
         xmlns:local="clr-namespace:ScanAndMail"
         mc:Ignorable="d"
         Title="ScanAndMail" Height="450" Width="800"  Activated="MainWindow_Activated">
-
-
     <Grid>
-
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -22,7 +18,8 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="einstellungenButton" Click="EinstellungenButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="20">
+        <Button x:Name="einstellungenButton" Click="EinstellungenButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" 
+                Height="20">
             Einstellungen
         </Button>
 
@@ -30,16 +27,19 @@
             Info
         </Button>
 
+        <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="0" Height="298" Width="212"/>
 
-        <Button x:Name="scanButton" Click="ScanButton_Click" Height="60" Width="200" FontSize="20" Background="#FFE09030"  RenderTransformOrigin="0.507,0.727" Content="Dokument scannen" Grid.Row="1" />
+        <Button x:Name="scanButton" Click="ScanButton_Click" Height="50" Width="200" FontSize="20" Background="#FFE09030"  
+                RenderTransformOrigin="0.507,0.727" Content="Dokument scannen" Grid.Row="2"  Grid.Column="0" Margin="0,0,0,10"/>
 
 
-        <Button Click="WeiterButton_Click" x:Name="weiterButton"  Height="40" Width="200" FontSize="20" Grid.Row="2" Grid.Column="1" IsEnabled="False" >
-            Weiter
-        </Button>
 
-        <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="1" Height="298" Width="212">
-
-        </Image>
+        <Button x:Name="MailSendenButton"  Click="MailSendenButton_Click" Height="50" Width="200" FontSize="20" Grid.Row="2" 
+                Grid.Column="1" IsEnabled="False" Margin="0,0,0,10" Content="E-Mail schicken" />
+        <TextBlock x:Name="StandardText" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="147" Width="302"/>
+        <Label Grid.Column="1" Content="Betreff:" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="302" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="Empfänger E-Mail" HorizontalAlignment="Center" VerticalAlignment="Top" Width="302" Margin="0,65,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="SubjectTextBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302"/>
+        <TextBox x:Name="ReceiverTextBox" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Margin="0,91,0,0"/>
     </Grid>
 </Window>

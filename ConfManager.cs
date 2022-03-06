@@ -15,7 +15,8 @@ namespace ScanAndMail
         private const String isDateAddedConstant = "isDateAdded";
         private const String ScannedFileConstant = "ScannedFile";
 
-        private const String SenderConstant = "Sender";
+        private const String MyNameConstant = "MyName";
+        private const String MyMailAdressConstant = "MyMailAddress";
         private const String HashedPasswordConstant = "HashedPassword";
         private const String SMTP_ServerConstant = "SMTP_Server";
 
@@ -55,9 +56,13 @@ namespace ScanAndMail
         {
             ConfigurationManager.AppSettings.Set(ScannedFileConstant, str);
         }
-        public static void SetSender(String str)
+        public static void SetMyName(String str)
         {
-            ConfigurationManager.AppSettings.Set(SenderConstant, str);
+            ConfigurationManager.AppSettings.Set(MyNameConstant, str);
+        }
+        public static void SetMyMailAddress(String str)
+        {
+            ConfigurationManager.AppSettings.Set(MyMailAdressConstant, str);
         }
         public static void SetHashedPassword(String str)
         {
@@ -88,7 +93,6 @@ namespace ScanAndMail
         {
             return ConfigurationManager.AppSettings.Get(directoryConstant);
         }
-
         public static String GetFileName()
         {
             return ConfigurationManager.AppSettings.Get(fileNameConstant);
@@ -113,9 +117,14 @@ namespace ScanAndMail
             return ConfigurationManager.AppSettings.Get(ScannedFileConstant);
         }
 
-        public static String GetSender()
+        public static String GetMyName()
         {
-            return ConfigurationManager.AppSettings.Get(SenderConstant);
+            return ConfigurationManager.AppSettings.Get(MyNameConstant);
+        }
+
+        public static String GetMyMailAddress ()
+        {
+            return ConfigurationManager.AppSettings.Get(MyMailAdressConstant);
         }
 
         public static String GetHashedPassword()

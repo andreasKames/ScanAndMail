@@ -31,7 +31,12 @@ namespace ScanAndMail
             InitializeComponent();
             Uri uri = new Uri(@"E:\Dateien von Andreas\Scans\Testbetrieb.jpg");
             ScanImage.Source = new BitmapImage(uri);
-            weiterButton.IsEnabled = true;
+            MailSendenButton.IsEnabled = true;
+
+            ReceiverTextBox.Text = ConfManager.GetReceiver();
+            SubjectTextBox.Text = ConfManager.GetSubject();
+            StandardText.Text = ConfManager.GetStandardText(); 
+
         }
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
@@ -51,14 +56,15 @@ namespace ScanAndMail
                 Uri uri = new Uri(imagePath);
                 ScanImage.Source = new BitmapImage(uri);
 
-                weiterButton.IsEnabled = true;
+                MailSendenButton.IsEnabled = true;
             }             
         }
 
-        private void WeiterButton_Click(object sender, RoutedEventArgs e)
+        private void MailSendenButton_Click(object sender, RoutedEventArgs e)
         {
-            E_MailWindow e_MailWindow = new E_MailWindow();
-            e_MailWindow.ShowDialog();
+            //E_MailWindow e_MailWindow = new E_MailWindow();
+            //e_MailWindow.ShowDialog();
+            Mail.send();
         }
 
         private void EinstellungenButton_Click(object sender, RoutedEventArgs e)
