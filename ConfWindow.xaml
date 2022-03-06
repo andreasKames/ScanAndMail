@@ -21,16 +21,39 @@
             </TabItem>
             <TabItem x:Name="EMailTabItem" Header="E-Mail" Height="20" VerticalAlignment="Bottom">
                 <StackPanel>
-                    <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold"/>
-                    <TextBox x:Name="E_MailTextBox" TextWrapping="Wrap" Text="" Width="515"/>
-                    <Label Content="Passwort:" FontWeight="Bold"/>
-                    <PasswordBox x:Name="PasswordBox"  Width="515"/>
+                    <Grid>
+                        <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold" />
+                        <TextBox x:Name="E_MailTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+                    <Grid>
+                        <Label Content="Passwort:" FontWeight="Bold" />
+                        <PasswordBox x:Name="PasswordBox"  HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+                    
+                    <Grid>
+                        <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold" />
+                        <TextBox x:Name="SMTP_ServerTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="Empfänger E-Mail Adr.:" FontWeight="Bold" />
+                        <TextBox x:Name="ReceiverTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+                    
+                    <Grid>
+                        <Label Content="Betreff:" FontWeight="Bold" />
+                        <TextBox x:Name="SubjectTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+                    
+                    <Label Content="Text für E-Mail:" FontWeight="Bold" />
+                    <TextBlock x:Name="StandardText" TextWrapping="Wrap" Text="StndardText" Height="138"/>
+
                 </StackPanel>
             </TabItem>
         </TabControl>
         <Button x:Name="OK_Button"    Content="OK"        Grid.Row="1" Grid.Column="3" Width="99" Height="20" Click="OK_Button_Click"/>
         <Button x:Name="CancelButton" Content="Abbrechen" Grid.Row="1" Grid.Column="2" Width="99" Height="20" Click="CancelButton_Click"/>
-        
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

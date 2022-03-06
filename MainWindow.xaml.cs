@@ -29,6 +29,9 @@ namespace ScanAndMail
         public MainWindow()
         {
             InitializeComponent();
+            Uri uri = new Uri(@"E:\Dateien von Andreas\Scans\Testbetrieb.jpg");
+            ScanImage.Source = new BitmapImage(uri);
+            weiterButton.IsEnabled = true;
         }
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
