@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Security;
 
 namespace ScanAndMail
 {
@@ -23,7 +25,8 @@ namespace ScanAndMail
         private const String ReceiverConstant = "Receiver";
         private const String SubjectConstant = "Subject";
         private const String StandardTextConstant = "StandardText";
-
+        
+        
 
         // Setter Methods
 
@@ -56,7 +59,9 @@ namespace ScanAndMail
         {
             ConfigurationManager.AppSettings.Set(ScannedFileConstant, str);
         }
-        public static void SetMyName(String str)
+        
+        
+        public static void SetMyName(String str)        
         {
             ConfigurationManager.AppSettings.Set(MyNameConstant, str);
         }
@@ -64,10 +69,12 @@ namespace ScanAndMail
         {
             ConfigurationManager.AppSettings.Set(MyMailAdressConstant, str);
         }
-        public static void SetHashedPassword(String str)
+        public static void SetHashedPassword(SecureString secString)
         {
+            String str = Crypthography.EncryptString(secString);
             ConfigurationManager.AppSettings.Set(HashedPasswordConstant, str);
         }
+
         public static void SetSMTP_Servery(String str)
         {
             ConfigurationManager.AppSettings.Set(SMTP_ServerConstant, str);
@@ -127,9 +134,10 @@ namespace ScanAndMail
             return ConfigurationManager.AppSettings.Get(MyMailAdressConstant);
         }
 
-        public static String GetHashedPassword()
+        public static SecureString GetHashedPassword()
         {
-            return ConfigurationManager.AppSettings.Get(HashedPasswordConstant);
+            String str = ConfigurationManager.AppSettings.Get(HashedPasswordConstant);
+            return Crypthography.DecryptString(str);
         }
 
         public static String GetSMTP_Server()

@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ConfManager.cs" />
+    <Compile Include="Crypthography.cs" />
     <Compile Include="FileNameWithDate.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="ScannerSettings.cs" />
