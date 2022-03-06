@@ -75,7 +75,7 @@ namespace ScanAndMail
             ConfigurationManager.AppSettings.Set(HashedPasswordConstant, str);
         }
 
-        public static void SetSMTP_Servery(String str)
+        public static void SetSMTP_Server(String str)
         {
             ConfigurationManager.AppSettings.Set(SMTP_ServerConstant, str);
         }

@@ -52,7 +52,16 @@ namespace ScanAndMail
 
             ListBoxScanner.SelectedIndex = scannerNumber;
             PathTextBox.Text = ConfManager.GetDirectory();
-            FileNameTextBox.Text = ConfManager.GetFileName();            
+            FileNameTextBox.Text = ConfManager.GetFileName();
+
+            // Mail Teil
+
+            NameTextBox.Text = ConfManager.GetMyName();
+            E_MailTextBox.Text = ConfManager.GetMyMailAddress();
+            SMTP_ServerTextBox.Text = ConfManager.GetSMTP_Server();
+            ReceiverTextBox.Text = ConfManager.GetReceiver();
+            SubjectTextBox.Text = ConfManager.GetSubject(); 
+            StandardText.Text = ConfManager.GetStandardText();
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
@@ -81,7 +90,15 @@ namespace ScanAndMail
             {
                 MessageBox.Show("Dateipfad nicht gefunden!");
                 PathTextBox.Focus();
-            }         
+            }
+            
+            ConfManager.SetMyName(NameTextBox.Text);
+            ConfManager.SetMyMailAddress(E_MailTextBox.Text);
+            ConfManager.SetHashedPassword(PasswordBox.SecurePassword);
+            ConfManager.SetSMTP_Server(SMTP_ServerTextBox.Text);
+            ConfManager.SetReceivery(ReceiverTextBox.Text); 
+            ConfManager.SetSubject(SubjectTextBox.Text);
+            ConfManager.SetStandardText(StandardText.Text);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -22,6 +22,10 @@
             <TabItem x:Name="EMailTabItem" Header="E-Mail" Height="20" VerticalAlignment="Bottom">
                 <StackPanel>
                     <Grid>
+                        <Label Content="Ihr Name:" FontWeight="Bold" />
+                        <TextBox x:Name="NameTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+                    <Grid>
                         <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold" />
                         <TextBox x:Name="E_MailTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
                     </Grid>
@@ -31,7 +35,7 @@
                     </Grid>
                     
                     <Grid>
-                        <Label Content="Eigene E-Mail Adresse:" FontWeight="Bold" />
+                        <Label Content="SMTP Server:" FontWeight="Bold" />
                         <TextBox x:Name="SMTP_ServerTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
                     </Grid>
 

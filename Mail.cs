@@ -2,6 +2,7 @@
 using System;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using System.Windows;
 
 namespace ScanAndMail
 {
@@ -21,15 +22,27 @@ namespace ScanAndMail
             var builder = new BodyBuilder();
             builder.TextBody = ConfManager.GetStandardText();
             //mail.Body = new TextPart(MimeKit.Text.TextFormat.Plain) {Text = ConfManager.GetStandardText() };
-            builder.Attachments.Add(ConfManager.GetScannedFile());
+            //builder.Attachments.Add(ConfManager.GetScannedFile());
             mail.Body = builder.ToMessageBody();
-
+            Console.WriteLine(mail.ToString());
             // Mail senden
             var smtp = new SmtpClient();
-            smtp.Connect(ConfManager.GetReceiver(), 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate(ConfManager.GetMyMailAddress(), "[PASSWORD]");
-            smtp.Send(mail);
-            smtp.Disconnect(true); 
+            try
+            {
+                smtp.Connect(ConfManager.GetReceiver(), 587, SecureSocketOptions.StartTls);
+                // Nur zu Testzwecken!!
+                String login = "mannimustermann2@web.de";
+                String password = "asyzVXB7z5eAWtm";
+                smtp.Authenticate(login, password);
+                //smtp.Authenticate(ConfManager.GetMyMailAddress(), ConfManager.GetHashedPassword().ToString());
+                smtp.Send(mail);
+                smtp.Disconnect(true);
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                MessageBox.Show("Fehler beim Verschicken der E-Mail.\n" + ex.Message);
+            }
+            
             
         }
     }
