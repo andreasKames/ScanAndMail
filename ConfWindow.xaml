@@ -50,7 +50,7 @@
                     </Grid>
                     
                     <Label Content="Text für E-Mail:" FontWeight="Bold" />
-                    <TextBlock x:Name="StandardText" TextWrapping="Wrap" Text="StndardText" Height="138"/>
+                    <TextBox x:Name="StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
 
                 </StackPanel>
             </TabItem>

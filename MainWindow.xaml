@@ -34,12 +34,14 @@
 
 
 
+        <Label x:Name="ReceiverLabel" Grid.Column="1" Content="Empfänger E-Mail" HorizontalAlignment="Center" VerticalAlignment="Top" Width="302" Margin="0,65,0,0" FontWeight="Bold" Visibility="Hidden"/>
+        <TextBox x:Name="ReceiverTextBox" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Margin="0,91,0,0" Visibility="Hidden"/>
+        <Label x:Name="SubjectLabel" Grid.Column="1" Content="Betreff:" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="302" FontWeight="Bold" Visibility="Hidden"/>
+        <TextBox x:Name="SubjectTextBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Visibility="Hidden"/>
+        <TextBox x:Name="StandardText" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="147" Width="302" Visibility="Hidden"/>
+
         <Button x:Name="MailSendenButton"  Click="MailSendenButton_Click" Height="50" Width="200" FontSize="20" Grid.Row="2" 
                 Grid.Column="1" IsEnabled="False" Margin="0,0,0,10" Content="E-Mail schicken" />
-        <TextBlock x:Name="StandardText" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="147" Width="302"/>
-        <Label Grid.Column="1" Content="Betreff:" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="302" FontWeight="Bold"/>
-        <Label Grid.Column="1" Content="Empfänger E-Mail" HorizontalAlignment="Center" VerticalAlignment="Top" Width="302" Margin="0,65,0,0" FontWeight="Bold"/>
-        <TextBox x:Name="SubjectTextBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302"/>
-        <TextBox x:Name="ReceiverTextBox" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Margin="0,91,0,0"/>
+        
     </Grid>
 </Window>

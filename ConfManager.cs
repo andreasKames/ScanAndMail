@@ -134,10 +134,10 @@ namespace ScanAndMail
             return ConfigurationManager.AppSettings.Get(MyMailAdressConstant);
         }
 
-        public static SecureString GetHashedPassword()
+        public static String GetHashedPassword()
         {
             String str = ConfigurationManager.AppSettings.Get(HashedPasswordConstant);
-            return Crypthography.DecryptString(str);
+            return Crypthography.ToInsecureString( Crypthography.DecryptString(str));
         }
 
         public static String GetSMTP_Server()

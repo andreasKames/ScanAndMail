@@ -29,10 +29,12 @@ namespace ScanAndMail
         public MainWindow()
         {
             InitializeComponent();
+            /*
+             * Only for Testing
             Uri uri = new Uri(@"E:\Dateien von Andreas\Scans\Testbetrieb.jpg");
             ScanImage.Source = new BitmapImage(uri);
             MailSendenButton.IsEnabled = true;
-
+            */
             ReceiverTextBox.Text = ConfManager.GetReceiver();
             SubjectTextBox.Text = ConfManager.GetSubject();
             StandardText.Text = ConfManager.GetStandardText(); 
@@ -61,10 +63,8 @@ namespace ScanAndMail
         }
 
         private void MailSendenButton_Click(object sender, RoutedEventArgs e)
-        {
-            //E_MailWindow e_MailWindow = new E_MailWindow();
-            //e_MailWindow.ShowDialog();
-            Mail.send();
+        {            
+            Mail.Send();
         }
 
         private void EinstellungenButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +80,7 @@ namespace ScanAndMail
 
         private void MainWindow_Activated(object sender, EventArgs e)
         {
-            
+            this.IsEnabled = true;
             this.scannerNumber = ConfManager.GetScannerNumber();
             this.Directory = ConfManager.GetDirectory();
             this.FileName = ConfManager.GetFileName();
@@ -95,6 +95,11 @@ namespace ScanAndMail
             else
             {
                 scanButton.IsEnabled = true;
+                ReceiverLabel.Visibility = Visibility.Visible;
+                ReceiverTextBox.Visibility = Visibility.Visible;
+                SubjectLabel.Visibility = Visibility.Visible;
+                SubjectTextBox.Visibility = Visibility.Visible;
+                StandardText.Visibility = Visibility.Visible;
             }
         }
     }
