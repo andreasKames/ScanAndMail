@@ -59,6 +59,11 @@ namespace ScanAndMail
                 ScanImage.Source = new BitmapImage(uri);
 
                 MailSendenButton.IsEnabled = true;
+                ReceiverLabel.Visibility = Visibility.Visible;
+                ReceiverTextBox.Visibility = Visibility.Visible;
+                SubjectLabel.Visibility = Visibility.Visible;
+                SubjectTextBox.Visibility = Visibility.Visible;
+                StandardText.Visibility = Visibility.Visible;
             }             
         }
 
@@ -94,12 +99,7 @@ namespace ScanAndMail
             }
             else
             {
-                scanButton.IsEnabled = true;
-                ReceiverLabel.Visibility = Visibility.Visible;
-                ReceiverTextBox.Visibility = Visibility.Visible;
-                SubjectLabel.Visibility = Visibility.Visible;
-                SubjectTextBox.Visibility = Visibility.Visible;
-                StandardText.Visibility = Visibility.Visible;
+                scanButton.IsEnabled = true;                
             }
         }
     }
