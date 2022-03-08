@@ -31,28 +31,26 @@ namespace ScanAndMail
         
 
         // Setter Methods
+        public void SaveSettingsToDisk()
+        {
+            conf.Save(ConfigurationSaveMode.Full, true);
+            ConfigurationManager.RefreshSection(appSettingstConstant);
+        }
 
         public void SetDiretory(String directory)
         {
             conf.AppSettings.Settings.Remove(directoryConstant);
-            conf.AppSettings.Settings.Add(directoryConstant, directory);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
+            conf.AppSettings.Settings.Add(directoryConstant, directory);        
         }
         public void SetFileName(String fileName)
         {
             conf.AppSettings.Settings.Remove(fileNameConstant);
             conf.AppSettings.Settings.Add(fileNameConstant, fileName);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
         public void SetScannerNumber(int scannerNumber)
         {
             conf.AppSettings.Settings.Remove(scannerNumberConstant);
             conf.AppSettings.Settings.Add(scannerNumberConstant, scannerNumber.ToString());
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
-            //conf.Save();
         }
         public void SetDateAdded(Boolean isDateAdded)
         {
@@ -65,16 +63,12 @@ namespace ScanAndMail
             {
                 conf.AppSettings.Settings.Add(isDateAddedConstant, "false");
             }
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
 
         public void SetScannedFile(String str)
         {
             conf.AppSettings.Settings.Remove(ScannedFileConstant);
             conf.AppSettings.Settings.Add(ScannedFileConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
         
         
@@ -82,52 +76,40 @@ namespace ScanAndMail
         {
             conf.AppSettings.Settings.Remove(MyNameConstant);
             conf.AppSettings.Settings.Add(MyNameConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
+
         public void SetMyMailAddress(String str)
         {
             conf.AppSettings.Settings.Remove(MyMailAdressConstant);
             conf.AppSettings.Settings.Add(MyMailAdressConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
+
         public void SetHashedPassword(SecureString secString)
         {
             conf.AppSettings.Settings.Remove(HashedPasswordConstant);
             String str = Crypthography.EncryptString(secString);
             conf.AppSettings.Settings.Add(HashedPasswordConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
 
         public void SetSMTP_Server(String str)
         {
             conf.AppSettings.Settings.Remove(SMTP_ServerConstant);
             conf.AppSettings.Settings.Add(SMTP_ServerConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
         public void SetReceivery(String str)
         {
             conf.AppSettings.Settings.Remove(ReceiverConstant);
             conf.AppSettings.Settings.Add(ReceiverConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
         public void SetSubject(String str)
         {
             conf.AppSettings.Settings.Remove(SubjectConstant);
             conf.AppSettings.Settings.Add(SubjectConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
         public void SetStandardText(String str)
         {
             conf.AppSettings.Settings.Remove(StandardTextConstant);
             conf.AppSettings.Settings.Add(StandardTextConstant, str);
-            conf.Save(ConfigurationSaveMode.Full, true);
-            ConfigurationManager.RefreshSection(appSettingstConstant);
         }
 
 

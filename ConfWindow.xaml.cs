@@ -31,6 +31,7 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //ConfManager conf = new ConfManager();
             // Scannerliste initialisieren
             scanningWIA = new ScanningWIA();
             List<string> listScanner = scanningWIA.ListScanner();
@@ -62,11 +63,11 @@ namespace ScanAndMail
             ReceiverTextBox.Text = ConfManager.GetReceiver();
             SubjectTextBox.Text = ConfManager.GetSubject(); 
             StandardText.Text = ConfManager.GetStandardText();
+
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
-        {
-            String fileName = FileNameTextBox.Text;
+        {            
             //String scannerNumber = ListBoxScanner.SelectedIndex.ToString();
             ConfManager conf = new ConfManager();
             if (DateCheckBox.IsChecked == true)
@@ -80,7 +81,7 @@ namespace ScanAndMail
             
             conf.SetScannerNumber(ListBoxScanner.SelectedIndex);            
             conf.SetDiretory(PathTextBox.Text);           
-            conf.SetFileName(fileName);           
+            conf.SetFileName(FileNameTextBox.Text);           
                         
             if (Directory.Exists( ConfManager.GetDirectory() ) )
             {
@@ -99,6 +100,7 @@ namespace ScanAndMail
             conf.SetReceivery(ReceiverTextBox.Text); 
             conf.SetSubject(SubjectTextBox.Text);
             conf.SetStandardText(StandardText.Text);
+            conf.SaveSettingsToDisk();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
