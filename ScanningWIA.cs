@@ -55,8 +55,8 @@ namespace ScanAndMail
 
                 if (scanResult != null)
                 {
-                    ImageFile image = (ImageFile)scanResult;
-                    return image;
+                    ImageFile imageFile = (ImageFile)scanResult;
+                    return imageFile;
                 }
             }
             catch (COMException e)

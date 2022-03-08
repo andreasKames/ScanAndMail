@@ -78,6 +78,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -101,6 +102,7 @@
     <Compile Include="ConfManager.cs" />
     <Compile Include="Crypthography.cs" />
     <Compile Include="FileNameWithDate.cs" />
+    <Compile Include="ImageClass.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="ScannerSettings.cs" />
     <Compile Include="ScanningWIA.cs" />

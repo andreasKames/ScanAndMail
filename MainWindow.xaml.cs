@@ -1,6 +1,7 @@
 ﻿using System;
 //using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,15 @@ namespace ScanAndMail
             var imageFile =  scanningWIA.ScanImage(scannerNumber);
             if (imageFile != null)
             {
-                imageFile.SaveFile(imagePath);
+                var tempImage = "tempScanImage.jpg";
+                if (File.Exists(tempImage))
+                {
+                    File.Delete(tempImage);
+                }
+                imageFile.SaveFile(tempImage);
+                ImageClass.CompressImage(tempImage, imagePath, 50);
+                
+                // Anzeige im MainWindow
                 Uri uri = new Uri(imagePath);
                 ScanImage.Source = new BitmapImage(uri);
 
