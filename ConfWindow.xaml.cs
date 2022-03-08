@@ -30,7 +30,7 @@ namespace ScanAndMail
         }
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
-        {   
+        {
             // Scannerliste initialisieren
             scanningWIA = new ScanningWIA();
             List<string> listScanner = scanningWIA.ListScanner();
@@ -68,19 +68,19 @@ namespace ScanAndMail
         {
             String fileName = FileNameTextBox.Text;
             //String scannerNumber = ListBoxScanner.SelectedIndex.ToString();
-            
+            ConfManager conf = new ConfManager();
             if (DateCheckBox.IsChecked == true)
             {
-                ConfManager.SetDateAdded(true);
+                conf.SetDateAdded(true);
             }
             else
             {
-                ConfManager.SetDateAdded(false);
+                conf.SetDateAdded(false);
             }
             
-            ConfManager.SetScannerNumber(ListBoxScanner.SelectedIndex);            
-            ConfManager.SetDiretory(PathTextBox.Text);           
-            ConfManager.SetFileName(fileName);           
+            conf.SetScannerNumber(ListBoxScanner.SelectedIndex);            
+            conf.SetDiretory(PathTextBox.Text);           
+            conf.SetFileName(fileName);           
                         
             if (Directory.Exists( ConfManager.GetDirectory() ) )
             {
@@ -92,13 +92,13 @@ namespace ScanAndMail
                 PathTextBox.Focus();
             }
             
-            ConfManager.SetMyName(NameTextBox.Text);
-            ConfManager.SetMyMailAddress(E_MailTextBox.Text);
-            ConfManager.SetHashedPassword(PasswordBox.SecurePassword);
-            ConfManager.SetSMTP_Server(SMTP_ServerTextBox.Text);
-            ConfManager.SetReceivery(ReceiverTextBox.Text); 
-            ConfManager.SetSubject(SubjectTextBox.Text);
-            ConfManager.SetStandardText(StandardText.Text);
+            conf.SetMyName(NameTextBox.Text);
+            conf.SetMyMailAddress(E_MailTextBox.Text);
+            conf.SetHashedPassword(PasswordBox.SecurePassword);
+            conf.SetSMTP_Server(SMTP_ServerTextBox.Text);
+            conf.SetReceivery(ReceiverTextBox.Text); 
+            conf.SetSubject(SubjectTextBox.Text);
+            conf.SetStandardText(StandardText.Text);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

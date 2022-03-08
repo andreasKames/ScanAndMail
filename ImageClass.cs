@@ -11,6 +11,7 @@ namespace ScanAndMail
 {
     internal class ImageClass
     {
+        // Klasse ist auschliesslich dazu da, um Bilder (JPEGs) zu komprimieren
         public static void CompressImage(string inputFile, string outputFile, int quality)
         {
             using (Bitmap bmp1 = new Bitmap(inputFile))
