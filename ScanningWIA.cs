@@ -92,7 +92,7 @@ namespace ScanAndMail
                 }
                 else
                 {
-                    errorMessage = "Unbekannter Fehlercode!";
+                    errorMessage = "Unbekannter Fehlercode: "+errorCode;
                 }
                 MessageBox.Show(errorMessage);
             }

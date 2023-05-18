@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WIA;
 using System.IO;
+using Saraff.Twain;
 
 namespace ScanAndMail
 {
@@ -31,6 +32,11 @@ namespace ScanAndMail
 
         private void ConfWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            if ((bool)TwainIsChosen.IsChecked)
+            {
+                ListScannerLabel.Visibility = Visibility.Hidden;
+                ListBoxScanner.Visibility   = Visibility.Hidden;
+            }
             //ConfManager conf = new ConfManager();
             // Scannerliste initialisieren
             scanningWIA = new ScanningWIA();
@@ -39,7 +45,6 @@ namespace ScanAndMail
             {
                 ListBoxScanner.Items.Add(s);
             }
-
             // Einlesen der Config Werte
             int scannerNumber = ConfManager.GetScannerNumber();
             if (scannerNumber >= 0)
@@ -78,6 +83,15 @@ namespace ScanAndMail
             {
                 conf.SetDateAdded(false);
             }
+
+           
+            if (TwainIsChosen.IsChecked == true)
+            {
+                conf.SetScanApiType(ConfManager.ScanApiType.twain);
+            }
+            else {
+                conf.SetScanApiType(ConfManager.ScanApiType.wia);
+            }
             
             conf.SetScannerNumber(ListBoxScanner.SelectedIndex);            
             conf.SetDiretory(PathTextBox.Text);           
@@ -106,6 +120,25 @@ namespace ScanAndMail
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void TwainIsChosen_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ListScannerLabel != null) // Falls ConfWindow noch nicht geladen war, ansonten gibt es eine NullPointerException
+            {
+                ListScannerLabel.Visibility = Visibility.Hidden;
+                ListBoxScanner.Visibility = Visibility.Hidden;
+            }
+            
+        }
+
+        private void WIAIsChosen_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ListScannerLabel != null)
+            {
+                ListScannerLabel.Visibility = Visibility.Visible;
+                ListBoxScanner.Visibility = Visibility.Visible;
+            }
         }
     }
 }

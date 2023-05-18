@@ -8,11 +8,13 @@ using System.Security.Cryptography;
 using System.Security;
 using System.Windows;
 
-namespace ScanAndMail
+
+namespace   ScanAndMail
 {
     internal class ConfManager
     {
         private Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        private const String scanApiTypeConstant = "scanApiType";
         private const String scannerNumberConstant = "scannerNumber";
         private const String directoryConstant = "Directory";
         private const String fileNameConstant = "BaseFileName";
@@ -26,8 +28,9 @@ namespace ScanAndMail
 
         private const String ReceiverConstant = "Receiver";
         private const String SubjectConstant = "Subject";
-        private const String StandardTextConstant = "StandardText" ;
+        private const String StandardTextConstant = "StandardText";
         private const String appSettingstConstant = "appSettings";
+        public enum ScanApiType { wia, twain };
         
 
         // Setter Methods
@@ -35,6 +38,18 @@ namespace ScanAndMail
         {
             conf.Save(ConfigurationSaveMode.Full, true);
             ConfigurationManager.RefreshSection(appSettingstConstant);
+        }
+
+        public void SetScanApiType(ScanApiType scanApiType)
+        {
+            String apiTypeString = "twain";
+            conf.AppSettings.Settings.Remove(scanApiTypeConstant);
+            if (scanApiType == ScanApiType.wia)
+            {
+                Console.WriteLine("wia");
+                apiTypeString = "wia";
+            }
+            conf.AppSettings.Settings.Add(scanApiTypeConstant, apiTypeString);
         }
 
         public void SetDiretory(String directory)
@@ -115,7 +130,14 @@ namespace ScanAndMail
 
         //Getter Methods
 
-
+        public static ScanApiType GetScanApiType()
+        {
+            string apiType = ConfigurationManager.AppSettings.Get(scanApiTypeConstant);
+            Console.WriteLine(apiType);
+            if (apiType.Equals("wia"))
+                return ScanApiType.wia;
+            return ScanApiType.twain;
+        }
         public static String GetDirectory()
         {
             return ConfigurationManager.AppSettings.Get(directoryConstant);

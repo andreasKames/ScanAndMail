@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WIA;
+using Saraff.Twain;
 
 namespace ScanAndMail
 {
@@ -26,6 +27,7 @@ namespace ScanAndMail
         private int scannerNumber;
         private string Directory;
         private string FileName;
+        private enum apiType {wia, twain};
 
         public MainWindow()
         {
@@ -44,7 +46,6 @@ namespace ScanAndMail
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            var scanningWIA = new ScanningWIA();
             var imagePath = Directory + FileName;
             if (ConfManager.IsDateAdded())
             {                
@@ -52,28 +53,75 @@ namespace ScanAndMail
              }
             imagePath = FileNameWithDate.FindFileName(imagePath);
             //Console.WriteLine("imagePath: " + imagePath);
-            var imageFile =  scanningWIA.ScanImage(scannerNumber);
-            if (imageFile != null)
+           if (ConfManager.GetScanApiType() == ConfManager.ScanApiType.wia)
             {
-                var tempImage = "tempScanImage.jpg";
-                if (File.Exists(tempImage))
-                {
-                    File.Delete(tempImage);
-                }
-                imageFile.SaveFile(tempImage);
-                ImageClass.CompressImage(tempImage, imagePath, 50);
-                
-                // Anzeige im MainWindow
-                Uri uri = new Uri(imagePath);
-                ScanImage.Source = new BitmapImage(uri);
+                var scanningWIA = new ScanningWIA();
+                var imageFile = scanningWIA.ScanImage(scannerNumber);
 
-                MailSendenButton.IsEnabled = true;
-                ReceiverLabel.Visibility = Visibility.Visible;
-                ReceiverTextBox.Visibility = Visibility.Visible;
-                SubjectLabel.Visibility = Visibility.Visible;
-                SubjectTextBox.Visibility = Visibility.Visible;
-                StandardText.Visibility = Visibility.Visible;
-            }             
+                if (imageFile != null)
+                {
+                    //createImageAndShow(imageFile);
+                    var tempImage = "tempScanImage.jpg";
+                    if (File.Exists(tempImage))
+                    {
+                        File.Delete(tempImage);
+                    }
+                    imageFile.SaveFile(tempImage);
+                    ImageClass.CompressImage(tempImage, imagePath, 50);
+
+                    // Anzeige im MainWindow
+                    Uri uri = new Uri(imagePath);
+                    ScanImage.Source = new BitmapImage(uri);
+
+                    MailSendenButton.IsEnabled = true;
+                    ReceiverLabel.Visibility = Visibility.Visible;
+                    ReceiverTextBox.Visibility = Visibility.Visible;
+                    SubjectLabel.Visibility = Visibility.Visible;
+                    SubjectTextBox.Visibility = Visibility.Visible;
+                    StandardText.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                
+                Twain32 twain = new Twain32();
+                if (twain.SelectSource())
+                {
+                    twain.OpenDSM();
+                    twain.OpenDataSource();
+                    //twain.SetCap(TwCap.XResolution, TwCap.XResolution.);
+                    //twain.SetCap(TwCap.YResolution, 300);
+                    //twain.SetCap(TwCap.IPixelType, TwPixelType.RGB);
+                    twain.Acquire();
+                    try
+                    {
+                        var tempImage = twain.GetImage(0);
+                        if (tempImage != null)
+                        {
+                            //  image.Save(imagePath);
+                        }
+                        //    twain.save
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+
+                        throw;
+                    }
+                    
+                   // image.
+                    //Console.WriteLine(image.GetType().ToString());
+                    
+
+                }
+                // twain.SetDefaultSource(0);
+
+                    //   var imageFile =
+                }
+        }
+
+        private void createImageAndShow()
+        {
+            throw new NotImplementedException();
         }
 
         private void MailSendenButton_Click(object sender, RoutedEventArgs e)
@@ -102,7 +150,7 @@ namespace ScanAndMail
             //Console.WriteLine("ScannerNr: " + scannerNumber);
             // Wenn Scanner nicht erkannt wurde Scan Button deaktivieren
 
-            if (scannerNumber == -1)
+            if (scannerNumber == -1  && ConfManager.GetScanApiType() == ConfManager.ScanApiType.wia)
             {
                 scanButton.IsEnabled = false;
             }

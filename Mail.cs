@@ -15,7 +15,7 @@ namespace ScanAndMail
             mail.From.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress() ) );
             mail.To.Add(MailboxAddress.Parse(ConfManager.GetReceiver()));
             mail.Subject = ConfManager.GetSubject();
-            mail.Cc.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress() ) );
+            //mail.Cc.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress() ) );
             var builder = new BodyBuilder();
             builder.TextBody = ConfManager.GetStandardText();
             builder.Attachments.Add(ConfManager.GetScannedFile());
@@ -26,7 +26,7 @@ namespace ScanAndMail
             try
             {
                 smtp.Connect(ConfManager.GetSMTP_Server(), 587, SecureSocketOptions.StartTls);
-                Console.WriteLine("\nPasswort: " + ConfManager.GetHashedPassword().ToString() +"\n");
+                Console.WriteLine("\nPasswort: " + ConfManager.GetHashedPassword() +"\n");
                 smtp.Authenticate(ConfManager.GetMyMailAddress(), ConfManager.GetHashedPassword() );
                 smtp.Send(mail);
                 smtp.Disconnect(true);

@@ -10,8 +10,10 @@
         <TabControl TabStripPlacement="Left" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TabItem x:Name="ScannerTabItem" Header="Scanner" FontWeight="Bold">
                 <StackPanel>
-                    <Label Content="Bitte Scanner auswählen:" FontWeight="Bold" />
-                    <ListBox x:Name="ListBoxScanner" Height="40" d:ItemsSource="{d:SampleData ItemCount=2}" />
+                    <RadioButton x:Name="TwainIsChosen" IsChecked="True" Checked="TwainIsChosen_Checked">TWAIN</RadioButton>
+                    <RadioButton x:Name="WIAIsChosen" Checked="WIAIsChosen_Checked">WIA</RadioButton>
+                    <Label x:Name="ListScannerLabel" Content="Bitte Scanner auswählen:" FontWeight="Bold" />
+                    <ListBox x:Name="ListBoxScanner" Height="40" d:ItemsSource="{d:SampleData ItemCount=2}"/>
                     <Label Content="Dateipfad:" FontWeight="Bold"/>
                     <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Text="C:\Eigene Dateien\Dokumente\" Width="739"/>
                     <Label Content="Dateiname:" FontWeight="Bold"/>
@@ -19,7 +21,7 @@
                     <CheckBox x:Name="DateCheckBox" Content="Datum anfügen" RenderTransformOrigin="0.5,0.5" Width="472" IsChecked="True"/>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="EMailTabItem" Header="E-Mail" Height="20" VerticalAlignment="Bottom">
+            <TabItem x:Name="EMailTabItem" Header="E-Mail-Server" Height="20" VerticalAlignment="Bottom">
                 <StackPanel>
                     <Grid>
                         <Label Content="Ihr Name:" FontWeight="Bold" />
