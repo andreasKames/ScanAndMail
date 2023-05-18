@@ -50,13 +50,14 @@ namespace ScanAndMail
             if (ConfManager.IsDateAdded())
             {                
                 imagePath = FileNameWithDate.AddDate(imagePath);
-             }
+            }
             imagePath = FileNameWithDate.FindFileName(imagePath);
             //Console.WriteLine("imagePath: " + imagePath);
-           if (ConfManager.GetScanApiType() == ConfManager.ScanApiType.wia)
+
+            if (ConfManager.GetScanApiType() == ConfManager.ScanApiType.wia)
             {
                 var scanningWIA = new ScanningWIA();
-                var imageFile = scanningWIA.ScanImage(scannerNumber);
+                ImageFile imageFile = scanningWIA.ScanImage(scannerNumber);
 
                 if (imageFile != null)
                 {
@@ -67,23 +68,15 @@ namespace ScanAndMail
                         File.Delete(tempImage);
                     }
                     imageFile.SaveFile(tempImage);
+
+
                     ImageClass.CompressImage(tempImage, imagePath, 50);
-
                     // Anzeige im MainWindow
-                    Uri uri = new Uri(imagePath);
-                    ScanImage.Source = new BitmapImage(uri);
-
-                    MailSendenButton.IsEnabled = true;
-                    ReceiverLabel.Visibility = Visibility.Visible;
-                    ReceiverTextBox.Visibility = Visibility.Visible;
-                    SubjectLabel.Visibility = Visibility.Visible;
-                    SubjectTextBox.Visibility = Visibility.Visible;
-                    StandardText.Visibility = Visibility.Visible;
+                    ShowPictureAndMailForms(imagePath);
                 }
             }
             else
             {
-                
                 Twain32 twain = new Twain32();
                 if (twain.SelectSource())
                 {
@@ -93,33 +86,44 @@ namespace ScanAndMail
                     //twain.SetCap(TwCap.YResolution, 300);
                     //twain.SetCap(TwCap.IPixelType, TwPixelType.RGB);
                     twain.Acquire();
+                    System.Drawing.Image bmpImage = null;
                     try
                     {
-                        var tempImage = twain.GetImage(0);
-                        if (tempImage != null)
-                        {
-                            //  image.Save(imagePath);
-                        }
-                        //    twain.save
+                        bmpImage = twain.GetImage(0);
                     }
-                    catch (ArgumentOutOfRangeException)
+                    catch (ArgumentOutOfRangeException) { }
+                    if (bmpImage != null)
                     {
+                        //createImageAndShow(imageFile);
+                        var tempImage = "tempScanImage.jpg";
+                        if (File.Exists(tempImage))
+                        {
+                            File.Delete(tempImage);
+                        }
+                        bmpImage.Save(tempImage);
 
-                        throw;
+
+                        ImageClass.CompressImage(tempImage, imagePath, 50);
+                        ShowPictureAndMailForms(imagePath);
                     }
-                    
-                   // image.
-                    //Console.WriteLine(image.GetType().ToString());
-                    
-
                 }
-                // twain.SetDefaultSource(0);
-
-                    //   var imageFile =
-                }
+            }
         }
 
-        private void createImageAndShow()
+        private void ShowPictureAndMailForms(string imagePath)
+        {
+            Uri uri = new Uri(imagePath);
+            ScanImage.Source = new BitmapImage(uri);
+
+            MailSendenButton.IsEnabled = true;
+            ReceiverLabel.Visibility = Visibility.Visible;
+            ReceiverTextBox.Visibility = Visibility.Visible;
+            SubjectLabel.Visibility = Visibility.Visible;
+            SubjectTextBox.Visibility = Visibility.Visible;
+            StandardText.Visibility = Visibility.Visible;
+        }
+
+        private void CreateImageAndShow()
         {
             throw new NotImplementedException();
         }
