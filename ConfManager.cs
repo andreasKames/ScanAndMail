@@ -26,9 +26,14 @@ namespace   ScanAndMail
         private const String HashedPasswordConstant = "HashedPassword";
         private const String SMTP_ServerConstant = "SMTP_Server";
 
-        private const String ReceiverConstant = "Receiver";
-        private const String SubjectConstant = "Subject";
-        private const String StandardTextConstant = "StandardText";
+        private const String AOK_MailAdress_Constant = "AOK_MailAdress";
+        private const String AOK_SubjectConstant = "AOK_Subject";
+        private const String AOK_TextConstant = "AOK_Text";
+
+        private const String DKV_MailAdress_Constant = "DKV_MailAdress";
+        private const String DKV_SubjectConstant = "DKV_Subject";
+        private const String DKV_TextConstant = "DKV_Text";
+
         private const String appSettingstConstant = "appSettings";
         public enum ScanApiType { wia, twain };
         
@@ -111,23 +116,39 @@ namespace   ScanAndMail
             conf.AppSettings.Settings.Remove(SMTP_ServerConstant);
             conf.AppSettings.Settings.Add(SMTP_ServerConstant, str);
         }
-        public void SetReceivery(String str)
+
+        //Setter AOK
+        public void Set_AOK_MailAdress(String str)
         {
-            conf.AppSettings.Settings.Remove(ReceiverConstant);
-            conf.AppSettings.Settings.Add(ReceiverConstant, str);
+            conf.AppSettings.Settings.Remove(AOK_MailAdress_Constant);
+            conf.AppSettings.Settings.Add(AOK_MailAdress_Constant, str);
         }
-        public void SetSubject(String str)
+        public void Set_AOK_Subject(String str)
         {
-            conf.AppSettings.Settings.Remove(SubjectConstant);
-            conf.AppSettings.Settings.Add(SubjectConstant, str);
+            conf.AppSettings.Settings.Remove(AOK_SubjectConstant);
+            conf.AppSettings.Settings.Add(AOK_SubjectConstant, str);
         }
-        public void SetStandardText(String str)
+        public void Set_AOK_StandardText(String str)
         {
-            conf.AppSettings.Settings.Remove(StandardTextConstant);
-            conf.AppSettings.Settings.Add(StandardTextConstant, str);
+            conf.AppSettings.Settings.Remove(AOK_TextConstant);
+            conf.AppSettings.Settings.Add(AOK_TextConstant, str);
         }
 
-
+        public void Set_DKV_MailAdress(String str)
+        {
+            conf.AppSettings.Settings.Remove(DKV_MailAdress_Constant);
+            conf.AppSettings.Settings.Add(DKV_MailAdress_Constant, str);
+        }
+        public void Set_DKV_Subject(String str)
+        {
+            conf.AppSettings.Settings.Remove(DKV_SubjectConstant);
+            conf.AppSettings.Settings.Add(DKV_SubjectConstant, str);
+        }
+        public void Set_DKV_StandardText(String str)
+        {
+            conf.AppSettings.Settings.Remove(DKV_TextConstant);
+            conf.AppSettings.Settings.Add(DKV_TextConstant, str);
+        }
         //Getter Methods
 
         public static ScanApiType GetScanApiType()
@@ -189,21 +210,37 @@ namespace   ScanAndMail
             return ConfigurationManager.AppSettings.Get(SMTP_ServerConstant);
         }
 
-        public static String GetReceiver()
+
+        // Getter AOK
+        public static String Get_AOK_MailAdress()
         {
-            return ConfigurationManager.AppSettings.Get(ReceiverConstant);
+            return ConfigurationManager.AppSettings.Get(AOK_MailAdress_Constant);
         }
 
-        public static String GetSubject()
+        public static String Get_AOK_Subject()
         {
-            return ConfigurationManager.AppSettings.Get(SubjectConstant);
+            return ConfigurationManager.AppSettings.Get(AOK_SubjectConstant);
         }
 
-        public static String GetStandardText()
+        public static String Get_AOK_StandardText()
         {
-            return ConfigurationManager.AppSettings.Get(StandardTextConstant);
+            return ConfigurationManager.AppSettings.Get(AOK_TextConstant);
         }
 
-        
+
+        public static String Get_DKV_MailAdress()
+        {
+            return ConfigurationManager.AppSettings.Get(DKV_MailAdress_Constant);
+        }
+
+        public static String Get_DKV_Subject()
+        {
+            return ConfigurationManager.AppSettings.Get(DKV_SubjectConstant);
+        }
+
+        public static String Get_DKV_StandardText()
+        {
+            return ConfigurationManager.AppSettings.Get(DKV_TextConstant);
+        }
     }
 }

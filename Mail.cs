@@ -8,16 +8,16 @@ namespace ScanAndMail
 {
     internal class Mail
     {
-        internal static void Send()
+        internal static void Send(string receiver, string subject, string standardText)
         {
             // neue Nachricht kreieren
             var mail = new MimeMessage();
             mail.From.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress() ) );
-            mail.To.Add(MailboxAddress.Parse(ConfManager.GetReceiver()));
-            mail.Subject = ConfManager.GetSubject();
+            mail.To.Add(MailboxAddress.Parse(receiver ));
+            mail.Subject = subject;
             //mail.Cc.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress() ) );
             var builder = new BodyBuilder();
-            builder.TextBody = ConfManager.GetStandardText();
+            builder.TextBody = standardText;
             builder.Attachments.Add(ConfManager.GetScannedFile());
             mail.Body = builder.ToMessageBody();
             var smtp = new SmtpClient();
@@ -26,7 +26,7 @@ namespace ScanAndMail
             try
             {
                 smtp.Connect(ConfManager.GetSMTP_Server(), 587, SecureSocketOptions.StartTls);
-                Console.WriteLine("\nPasswort: " + ConfManager.GetHashedPassword() +"\n");
+               // Console.WriteLine("\nPasswort: " + ConfManager.GetHashedPassword() +"\n");
                 smtp.Authenticate(ConfManager.GetMyMailAddress(), ConfManager.GetHashedPassword() );
                 smtp.Send(mail);
                 smtp.Disconnect(true);
@@ -46,16 +46,16 @@ namespace ScanAndMail
             }
             
         }
-
-        public static void SendMessage()
+        /*
+        public static void SendMessage(string receiver, string subject, string standardText)
         {
             var mail = new MimeMessage();
             mail.From.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress()));
-            mail.To.Add(MailboxAddress.Parse(ConfManager.GetReceiver()));
-            mail.Subject = ConfManager.GetSubject();
+            mail.To.Add(MailboxAddress.Parse(receiver));
+            mail.Subject = subject;
             mail.Cc.Add(MailboxAddress.Parse(ConfManager.GetMyMailAddress()));
             var builder = new BodyBuilder();
-            builder.TextBody = ConfManager.GetStandardText();
+            builder.TextBody = standardText;
             //mail.Body = new TextPart(MimeKit.Text.TextFormat.Plain) {Text = ConfManager.GetStandardText() };
             builder.Attachments.Add(ConfManager.GetScannedFile());
             mail.Body = builder.ToMessageBody();
@@ -142,5 +142,6 @@ namespace ScanAndMail
                 client.Disconnect(true);
             }
         }
+        */
     }
 }

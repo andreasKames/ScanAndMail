@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="25*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -23,25 +23,42 @@
             Einstellungen
         </Button>
 
-        <Button x:Name="infoButton" Click="InfoButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="100" Margin="100,0,0,0" >
+        <Button x:Name="infoButton" Click="InfoButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="100" Margin="100,0,0,0" Height="20" >
             Info
         </Button>
 
-        <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="0" Height="298" Width="212"/>
+        <Image x:Name="ScanImage" Grid.RowSpan="2" Grid.Column="0" Margin="94,33,94,33"/>
 
-        <Button x:Name="scanButton" Click="ScanButton_Click" Height="50" Width="200" FontSize="20" Background="#FFE09030"  
-                RenderTransformOrigin="0.507,0.727" Content="Dokument scannen" Grid.Row="2"  Grid.Column="0" Margin="0,0,0,10"/>
+        <Button x:Name="scanButton" Click="ScanButton_Click" FontSize="20" Background="#FFE09030"  
+                RenderTransformOrigin="0.507,0.727" Content="Dokument scannen" Grid.Row="2"  Grid.Column="0" Margin="100,5,100,15"/>
 
-
-
-        <Label x:Name="ReceiverLabel" Grid.Column="1" Content="Empfänger E-Mail" HorizontalAlignment="Center" VerticalAlignment="Top" Width="302" Margin="0,65,0,0" FontWeight="Bold" Visibility="Hidden"/>
-        <TextBox x:Name="ReceiverTextBox" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Margin="0,91,0,0" Visibility="Hidden"/>
-        <Label x:Name="SubjectLabel" Grid.Column="1" Content="Betreff:" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="302" FontWeight="Bold" Visibility="Hidden"/>
-        <TextBox x:Name="SubjectTextBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302" Visibility="Hidden"/>
-        <TextBox x:Name="StandardText" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="147" Width="302" Visibility="Hidden"/>
-
-        <Button x:Name="MailSendenButton"  Click="MailSendenButton_Click" Height="50" Width="200" FontSize="20" Grid.Row="2" 
-                Grid.Column="1" IsEnabled="False" Margin="0,0,0,10" Content="E-Mail schicken" />
-        
+        <Grid Grid.Row="0" Grid.Column="1" Visibility="Hidden" x:Name="ReceiverButtons">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Mail_AOK_Button" Click="Mail_AOK_Button_Click"  
+                        IsEnabled="False" Content="AOK (Nachbarschaftsh.)" />
+                <Button x:Name="Mail_DKV_Button" Click="Mail_DKV_Button_Click"  
+                        IsEnabled="False" Content="DKV (Krangengymn.)" Width="170" Height="20" FontWeight="Bold" Margin="10,0,10,0" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="MailBlock" Visibility="Hidden">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="ReceiverLabel"  Content="Empfänger E-Mail:" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            Margin="0,0,5,0" FontWeight="Bold"  />
+                    <TextBox x:Name="ReceiverTextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="280"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="SubjectLabel"  Content="Betreff:"  HorizontalAlignment="Center"  VerticalAlignment="Center" 
+                           Margin="0,0,5,0" FontWeight="Bold"/>
+                    <TextBox x:Name="SubjectTextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="340"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="141">
+                    <TextBox x:Name="StandardText" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" 
+                             Text="TextBlock" VerticalAlignment="Top" Height="140" Width="397" RenderTransformOrigin="0.507,0.001"   />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="MailSendenButton"  Click="MailSendenButton_Click" FontSize="20" Grid.Row="2" 
+                            Grid.Column="1" IsEnabled="False" Margin="100,5,100,15" Content="E-Mail schicken"    />
     </Grid>
 </Window>

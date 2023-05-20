@@ -32,16 +32,17 @@ namespace ScanAndMail
         public MainWindow()
         {
             InitializeComponent();
-            /*
-             * Only for Testing
+
+            // Only for Testing
             Uri uri = new Uri(@"E:\Dateien von Andreas\Scans\Testbetrieb.jpg");
             ScanImage.Source = new BitmapImage(uri);
             MailSendenButton.IsEnabled = true;
-            */
+
+            /*
             ReceiverTextBox.Text = ConfManager.GetReceiver();
             SubjectTextBox.Text = ConfManager.GetSubject();
             StandardText.Text = ConfManager.GetStandardText(); 
-
+            */
         }
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
@@ -72,7 +73,7 @@ namespace ScanAndMail
 
                     ImageClass.CompressImage(tempImage, imagePath, 50);
                     // Anzeige im MainWindow
-                    ShowPictureAndMailForms(imagePath);
+                    ShowPictureAndMailButtons(imagePath);
                 }
             }
             else
@@ -82,9 +83,6 @@ namespace ScanAndMail
                 {
                     twain.OpenDSM();
                     twain.OpenDataSource();
-                    //twain.SetCap(TwCap.XResolution, TwCap.XResolution.);
-                    //twain.SetCap(TwCap.YResolution, 300);
-                    //twain.SetCap(TwCap.IPixelType, TwPixelType.RGB);
                     twain.Acquire();
                     System.Drawing.Image bmpImage = null;
                     try
@@ -104,17 +102,23 @@ namespace ScanAndMail
 
 
                         ImageClass.CompressImage(tempImage, imagePath, 50);
-                        ShowPictureAndMailForms(imagePath);
+                        ShowPictureAndMailButtons(imagePath);
                     }
                 }
             }
         }
 
-        private void ShowPictureAndMailForms(string imagePath)
+        private void ShowPictureAndMailButtons(string imagePath)
         {
             Uri uri = new Uri(imagePath);
             ScanImage.Source = new BitmapImage(uri);
 
+            Mail_AOK_Button.Visibility = Visibility.Visible;
+            Mail_DKV_Button.Visibility = Visibility.Visible;
+        }
+
+        private void ShowMailForms()
+        {
             MailSendenButton.IsEnabled = true;
             ReceiverLabel.Visibility = Visibility.Visible;
             ReceiverTextBox.Visibility = Visibility.Visible;
@@ -130,7 +134,7 @@ namespace ScanAndMail
 
         private void MailSendenButton_Click(object sender, RoutedEventArgs e)
         {            
-            Mail.Send();
+            Mail.Send(ReceiverTextBox.Text, SubjectTextBox.Text, StandardText.Text);
         }
 
         private void EinstellungenButton_Click(object sender, RoutedEventArgs e)
@@ -162,6 +166,16 @@ namespace ScanAndMail
             {
                 scanButton.IsEnabled = true;                
             }
+        }
+
+        private void Mail_AOK_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Mail_DKV_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

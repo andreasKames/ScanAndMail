@@ -41,18 +41,46 @@
                         <TextBox x:Name="SMTP_ServerTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
                     </Grid>
 
+                   
+
+                </StackPanel>
+            </TabItem>
+            
+            
+            
+            <TabItem x:Name="AOKTabItem" Header="AOK" Height="20" VerticalAlignment="Bottom">
+                <StackPanel>
                     <Grid>
                         <Label Content="Empfänger E-Mail Adr.:" FontWeight="Bold" />
-                        <TextBox x:Name="ReceiverTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                        <TextBox x:Name="AOK_MailTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
                     </Grid>
-                    
+
                     <Grid>
                         <Label Content="Betreff:" FontWeight="Bold" />
-                        <TextBox x:Name="SubjectTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                        <TextBox x:Name="AOK_SubjectTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
                     </Grid>
-                    
+
                     <Label Content="Text für E-Mail:" FontWeight="Bold" />
-                    <TextBox x:Name="StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
+                    <TextBox x:Name="AOK_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
+
+                </StackPanel>
+            </TabItem>
+
+
+            <TabItem x:Name="DKV_TabItem" Header="DKV" Height="20" VerticalAlignment="Bottom">
+                <StackPanel>
+                    <Grid>
+                        <Label Content="Empfänger E-Mail Adr.:" FontWeight="Bold" />
+                        <TextBox x:Name="DKV_MailTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="Betreff:" FontWeight="Bold" />
+                        <TextBox x:Name="DKV_SubjectTextBox" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                    </Grid>
+
+                    <Label Content="Text für E-Mail:" FontWeight="Bold" />
+                    <TextBox x:Name="DKV_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
 
                 </StackPanel>
             </TabItem>

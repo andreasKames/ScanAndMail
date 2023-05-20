@@ -65,10 +65,14 @@ namespace ScanAndMail
             NameTextBox.Text = ConfManager.GetMyName();
             E_MailTextBox.Text = ConfManager.GetMyMailAddress();
             SMTP_ServerTextBox.Text = ConfManager.GetSMTP_Server();
-            ReceiverTextBox.Text = ConfManager.GetReceiver();
-            SubjectTextBox.Text = ConfManager.GetSubject(); 
-            StandardText.Text = ConfManager.GetStandardText();
 
+            AOK_MailTextBox.Text = ConfManager.Get_AOK_MailAdress();
+            AOK_SubjectTextBox.Text = ConfManager.Get_AOK_Subject();
+            AOK_StandardText.Text = ConfManager.Get_AOK_StandardText();
+
+            DKV_MailTextBox.Text = ConfManager.Get_DKV_MailAdress();
+            DKV_SubjectTextBox.Text = ConfManager.Get_DKV_Subject();
+            DKV_StandardText.Text = ConfManager.Get_DKV_StandardText();
         }
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
@@ -111,9 +115,15 @@ namespace ScanAndMail
             conf.SetMyMailAddress(E_MailTextBox.Text);
             conf.SetHashedPassword(PasswordBox.SecurePassword);
             conf.SetSMTP_Server(SMTP_ServerTextBox.Text);
-            conf.SetReceivery(ReceiverTextBox.Text); 
-            conf.SetSubject(SubjectTextBox.Text);
-            conf.SetStandardText(StandardText.Text);
+
+            conf.Set_AOK_MailAdress(AOK_MailTextBox.Text);
+            conf.Set_AOK_Subject(AOK_SubjectTextBox.Text);
+            conf.Set_AOK_StandardText(AOK_StandardText.Text);
+
+            conf.Set_DKV_MailAdress(DKV_MailTextBox.Text);
+            conf.Set_DKV_Subject(DKV_SubjectTextBox.Text);
+            conf.Set_DKV_StandardText(DKV_StandardText.Text);
+            
             conf.SaveSettingsToDisk();
         }
 
