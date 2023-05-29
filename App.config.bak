@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+  </startup>
+  <appSettings>
+	<add key="ScannedFile" value="E:\Dateien von Andreas\Scans\Scan2022-3-4000.jpg" />
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+    <add key="Receiver" value="andkames-studium@yahoo.de" />
+    <add key="Subject" value="Test" />
+    <add key="StandardText" value="Hello, this is a test!" />
+    <add key="isDateAdded" value="true" />
+    <add key="scanApiType" value="twain" />
+    <add key="scannerNumber" value="0" />
+    <add key="Directory" value="E:\Dateien von Andreas\Scans\" />
+    <add key="BaseFileName" value="Scan.jpg" />
+    <add key="MyName" value="andkames-studium@yahoo.de" />
+    <add key="MyMailAddress" value="mannimustermann2@web.de" />
+    <add key="HashedPassword" value="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASXvr5AB8A0CdeVTmZA1xbwAAAAACAAAAAAAQZgAAAAEAACAAAACmT69+L1QNtkM2Wrm2aGm81C0Jlb6hd+3JFbT9DKE55QAAAAAOgAAAAAIAACAAAAB7UE6Lhr2E0doXAij3dr24uEqhd1lyGlJwsZte6/lL1BAAAAALGxpxQ3hzanEiBK8YBcTOQAAAAOLLNAJS2d8eUN6DHD2Gbe7QUjHlnc2EGPLJpp4neTdJBYsfyT0M5WtHeaCFKK1nYF5UpLQ3KAY3KG8EXk4AV1s=" />
+    <add key="SMTP_Server" value="smtp.web.de" />
+    <add key="AOK_MailAdress" value="andreas_kames@yahoo.de" />
+    <add key="AOK_Subject" value="TestMail" />
+    <add key="AOK_Text" value="aaaaaaaaaaaaaaaaaa&#xD;&#xA;&#xD;&#xA;" />
+    <add key="DKV_MailAdress" value="bla@dkv.de" />
+    <add key="DKV_Subject" value="dddddddd" />
+    <add key="DKV_Text" value="ddddddddddddddddddd&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
+  </appSettings>
+    
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>

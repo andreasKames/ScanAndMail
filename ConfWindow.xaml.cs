@@ -112,8 +112,7 @@ namespace ScanAndMail
             }
             
             conf.SetMyName(NameTextBox.Text);
-            conf.SetMyMailAddress(E_MailTextBox.Text);
-            conf.SetHashedPassword(PasswordBox.SecurePassword);
+            conf.SetMyMailAddress(E_MailTextBox.Text);            
             conf.SetSMTP_Server(SMTP_ServerTextBox.Text);
 
             conf.Set_AOK_MailAdress(AOK_MailTextBox.Text);
@@ -149,6 +148,13 @@ namespace ScanAndMail
                 ListScannerLabel.Visibility = Visibility.Visible;
                 ListBoxScanner.Visibility = Visibility.Visible;
             }
+        }
+
+        private void PasswordBox_Changed(object sender, RoutedEventArgs e)
+        {
+            ConfManager conf = new ConfManager();
+            conf.SetHashedPassword(PasswordBox.SecurePassword);
+            conf.SaveSettingsToDisk();
         }
     }
 }

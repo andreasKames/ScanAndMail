@@ -106,9 +106,13 @@ namespace   ScanAndMail
 
         public void SetHashedPassword(SecureString secString)
         {
-            conf.AppSettings.Settings.Remove(HashedPasswordConstant);
-            String str = Crypthography.EncryptString(secString);
-            conf.AppSettings.Settings.Add(HashedPasswordConstant, str);
+            if (secString != null )
+            {
+                conf.AppSettings.Settings.Remove(HashedPasswordConstant);
+                String str = Crypthography.EncryptString(secString);
+                conf.AppSettings.Settings.Add(HashedPasswordConstant, str);
+            }
+            
         }
 
         public void SetSMTP_Server(String str)

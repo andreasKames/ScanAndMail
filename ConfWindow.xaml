@@ -33,7 +33,7 @@
                     </Grid>
                     <Grid>
                         <Label Content="Passwort:" FontWeight="Bold" />
-                        <PasswordBox x:Name="PasswordBox"  HorizontalAlignment="Left" Margin="150,0,0,0" Width="365"/>
+                        <PasswordBox x:Name="PasswordBox"  HorizontalAlignment="Left" Margin="150,0,0,0" Width="365" PasswordChanged="PasswordBox_Changed"/>
                     </Grid>
                     
                     <Grid>
@@ -61,7 +61,7 @@
                     </Grid>
 
                     <Label Content="Text für E-Mail:" FontWeight="Bold" />
-                    <TextBox x:Name="AOK_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
+                    <TextBox x:Name="AOK_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231" AcceptsReturn="True"/>
 
                 </StackPanel>
             </TabItem>
@@ -80,7 +80,7 @@
                     </Grid>
 
                     <Label Content="Text für E-Mail:" FontWeight="Bold" />
-                    <TextBox x:Name="DKV_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231"/>
+                    <TextBox x:Name="DKV_StandardText" TextWrapping="Wrap" Text="TextBox" Width="509" Height="231" AcceptsReturn="True"/>
 
                 </StackPanel>
             </TabItem>
